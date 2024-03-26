@@ -61,34 +61,33 @@ function Offer({offer}){
           </button>
 
           <div className='flex justify-center items-center p-8 m-4 flex-col text-center i'>
-          <h2 className="text-3xl">This is the section about the car</h2>
-              <div>
+            <h2 className="text-3xl">This is the section about the car</h2>
+              <div className="text-lg font-semibold">
                   {offer.brand}
               </div>
-              <div>
+              <div className="text-lg font-semibold">
                   {offer.model}
               </div>
-              <div>
+              <div className="text-lg font-semibold">
                   {offer.year}
               </div>
               <h2 className="text-3xl">This is the section about the offer</h2>
-              <div>
+              <div className="text-lg">
                   {offer.name}
               </div>
-              <div>
+              <div className="text-lg">
                   {offer.price}
               </div>
-              <div>
+              <div className="text-lg">
                   {offer.description}
               </div>
-              
+
               <button
-               className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full mt-20"
+                  className="bg-blue-200 hover:bg-blue-800 text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full mt-20"
               >
                 Make a reservation
               </button>
-
-          </div>
+            </div>
 
           
         </Modal>

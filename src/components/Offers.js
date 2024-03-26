@@ -62,44 +62,30 @@ function Offers() {
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Contact us</button>
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Feedback</button>
 
-            <div className="gap-6 m-4 flex justify-center flex-col items-center mt-40">
-                {offers.map((offer) => (
-                    <div
-                        key={offer.id}
-                        className="relative grid h-[40rem] w-full max-w-[70rem] flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 relative"
-                    >
-                        <div className="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-clip-border bg-center text-gray-700 shadow-none">
-                            <div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50"></div>
-                        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-4 justify-center items-center mt-40">
+            {offers.map((offer) => (
+                <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-overflow-hidden shadow-lg">
+                    <div className="w-full h-52 bg-cover bg-center" style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-4 right-4">
-                            <button
-                                onClick={() => handleShowAlert(offer.id)}
-                                className="rounded-full bg-[#e0fbfc] p-2 text-gray-500"
-                            >
+                            <button onClick={() => handleShowAlert(offer.id)} className="rounded-full bg-[#e0fbfc] p-2 text-gray-500">
                                 <IoHeartOutline className="w-12 h-12" />
                             </button>
                         </div>
-                        <div className="relative p-6 px-6 py-14 md:px-12">
-                            <h1 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased">
-                                {offer.name}
-                            </h1>
-                            <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased">
-                                {offer.price}
-                            </h2>
-                            <h5 className="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
-                                {offer.description}
-                            </h5>
-                            <Offer offer={offer} />
-                        </div>
                     </div>
-                ))}
-            </div>
-            {showAlert && (
-                <Alert
-                    message="You have liked a new offer"
-                    onClose={() => setShowAlert(false)}
-                />
-            )}
+                    <div className="p-6">
+                        <h1 className="mb-4 font-sans text-2xl font-semibold text-white">{offer.name}</h1>
+                        <h2 className="mb-4 font-sans text-xl font-semibold text-white">{offer.price}</h2>
+                        <Offer offer={offer} />
+                    </div>
+                </div>
+            ))}
+        </div>
+    {showAlert && (
+    <Alert
+        message="You have liked a new offer"
+        onClose={() => setShowAlert(false)}
+    />
+)}
         </div>
     );
 }
