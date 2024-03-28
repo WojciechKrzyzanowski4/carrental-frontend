@@ -3,7 +3,9 @@ import { SERVER_URL } from "./utilComponents/constant";
 import CarForm from "./car/CarForm";
 import OfferForm from "./offer/OfferForm";
 import DeleteComponent from "./car/DeleteComponent";
+import DeleteOffer from "./offer/DeleteOffer"
 import EditComponent from "./car/EditComponent";
+import EditOffer from "./offer/EditOffer";
 import User from "./user/User"
 
 function Dashboard() {
@@ -104,7 +106,8 @@ function Dashboard() {
                         <p className="text-gray-700 text-base">Price: {offer.price}</p>
                     </div>
                     <div className="px-6 py-4 ">
-                        <h2>implement delete and edit</h2>
+                        <DeleteOffer handleOfferClick={handleOfferClick} id={offer.id}/>
+                        <EditOffer handleOfferClick={handleOfferClick} cars={cars} offer={offer}/> 
                     </div>
                     </div>
                 ))}

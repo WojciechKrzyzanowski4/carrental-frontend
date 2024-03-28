@@ -14,7 +14,6 @@ const customStyles = {
     },
 };
 
-
 function EditComponent({car, handleClick}){
 
     let subtitle;
@@ -27,7 +26,7 @@ function EditComponent({car, handleClick}){
     
     function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#000';
     }
     
     function closeModal() {
@@ -64,27 +63,31 @@ function EditComponent({car, handleClick}){
     }
 
     return(
-        <div>
+       <div>
         <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105 m-4 w-[60%]" onClick={openModal}>Edit</button>
         <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}
-            contentLabel="Example Modal"
+            contentLabel="Car-edition-Modal"
+            className="modal fixed inset-0 flex items-center justify-center"
+            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
         >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-            <button onClick={closeModal}>close</button>
-                <form onSubmit={handleSubmit}>
-                    <input hidden name='id' defaultValue={car.id}></input>
-                    <input name='brand' defaultValue={car.brand}></input>
-                    <input name='model' defaultValue={car.model}></input>
-                    <input name='year' defaultValue={car.year}></input>
-                    <button type='submit'>Edit</button>
-                </form>
+         <div className="modal-container mx-auto p-16 bg-white rounded-lg shadow-lg">
+         <h2 className="text-2xl font-bold mb-4" ref={(_subtitle) => (subtitle = _subtitle)}>Editing the Car</h2>
+          <form onSubmit={handleSubmit}>
+           <input type="hidden" name='id' defaultValue={car.id}></input>
+           <input className="block mb-4 p-2 border border-gray-300 rounded" name='brand' defaultValue={car.brand}></input>
+           <input className="block mb-4 p-2 border border-gray-300 rounded" name='model' defaultValue={car.model}></input>
+           <input className="block mb-4 p-2 border border-gray-300 rounded" name='year' defaultValue={car.year}></input>
+           <button className=" bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105 w-[100%]" type='submit'>Edit</button>
+          </form>
+          <button className="absolute top-4 right-4 bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105" onClick={closeModal}>X</button>
+         </div>    
         </Modal>
-        </div>
-    )
+       </div>
+    );
 }
 
 export default EditComponent;

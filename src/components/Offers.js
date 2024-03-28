@@ -62,7 +62,7 @@ function Offers() {
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Contact us</button>
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Feedback</button>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-4 justify-center items-center mt-40">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 m-4 justify-center items-center mt-40">
             {offers.map((offer) => (
                 <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-overflow-hidden shadow-lg">
                     <div className="w-full h-52 bg-cover bg-center" style={{ backgroundImage: `url(${offer.imageUrl})` }}>
