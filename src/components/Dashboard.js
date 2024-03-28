@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { SERVER_URL } from "./utilComponents/constant";
 import CarForm from "./car/CarForm";
+import OfferForm from "./offer/OfferForm";
 import DeleteComponent from "./car/DeleteComponent";
 import EditComponent from "./car/EditComponent";
 import User from "./user/User"
 
 function Dashboard() {
 
-    const [cars, setCars] = useState();
+    const [cars, setCars] = useState([]);
     //CREDENTIALS ARE THE MOST IMPORTANT THING IN THE WHOLE WORLD BTW
     const getCars = async () => {
-        const response = await fetch(
-            SERVER_URL + '/car',
-            { method: 'GET', redirect: "follow", credentials:'include' }
-        ).then((response) => response);
-
-        if(response.redirected){
-            document.location=response.url;
+        try {
+            const response = await fetch(
+                SERVER_URL + '/car',
+                { method: 'GET', redirect: "follow", credentials:'include' }
+            );
+            if (response.redirected) {
+                document.location = response.url;
+                return;
+            }
+            if (!response.ok) {
+                throw new Error('Failed to fetch cars');
+            }
+            const data = await response.json();
+            setCars(data);
+        } catch (error) {
+            console.error('Error fetching cars:', error.message);
         }
-        const data = await response.json();
-        setCars(data);
     }
 
     function handleClick() {
@@ -58,7 +66,13 @@ function Dashboard() {
 
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">Create and add a new car to the system</p>       
             <CarForm handleClick={handleClick}/>
-            <User></User>
+            {cars.length > 0 && (
+                <>
+                    <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">Create an offer for a car</p>
+                    <OfferForm cars={cars}/>
+                </>
+            )}
+            <User/>
             </div>
     )
 

@@ -41,22 +41,25 @@ function EditComponent({car, handleClick}){
         const formJson = Object.fromEntries(formData.entries());
         
         const requestOptions = {
-            method: "POST", 
+            method: "PUT", 
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(formJson),
             credentials:'include'
         }
 
         fetch(
-            SERVER_URL + '/car',
+            SERVER_URL + '/car/edit',
             requestOptions
         ).then(async response => {
             if(!response.ok){
                 console.log("Error occurred")
+                alert("the other admin was faster and managed to delete the car before you could edit it");
+            }else{
+                alert("car edited");
             }
 
             handleClick();
-            alert("car edited");
+            
         })
     }
 
