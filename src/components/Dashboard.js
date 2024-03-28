@@ -9,6 +9,7 @@ import User from "./user/User"
 function Dashboard() {
 
     const [cars, setCars] = useState([]);
+    const [offers, setOffers] = useState([]);
     //CREDENTIALS ARE THE MOST IMPORTANT THING IN THE WHOLE WORLD BTW
     const getCars = async () => {
         try {
@@ -30,13 +31,38 @@ function Dashboard() {
         }
     }
 
+    const getOffers = async () =>{
+        try{
+            const response = await fetch(
+                SERVER_URL + '/offer',
+                {method: 'GET', redirect:'follow', credentials:'include'}
+            );
+            if (response.redirected) {
+                document.location = response.url;
+                return;
+            }
+            if (!response.ok) {
+                throw new Error('Failed to fetch offers');
+            }
+            const data = await response.json();
+            setOffers(data);
+        }catch(error){
+            console.error('Error fetching offers:', error.message);
+        }
+    }
+
     function handleClick() {
         getCars();
+    }
+
+    function handleOfferClick(){
+        getOffers();
     }
 
     useEffect(()=>{
         document.body.style.overflow = 'visible';
         getCars();
+        getOffers();
     }, []);
 
     return (
@@ -66,12 +92,33 @@ function Dashboard() {
 
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">Create and add a new car to the system</p>       
             <CarForm handleClick={handleClick}/>
+
+            <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the current offers</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-8 ">
+                {offers && offers.map((offer) => (
+                    <div key={offer.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-400">
+                    <div className="px-6 py-4 ">
+                        <div className="font-bold text-xl mb-2">{offer.name}</div>
+                        <p className="text-gray-700 text-base">Description: {offer.description}</p>
+                        <p className="text-gray-700 text-base">Price: {offer.price}</p>
+                    </div>
+                    <div className="px-6 py-4 ">
+                        <h2>implement delete and edit</h2>
+                    </div>
+                    </div>
+                ))}
+            </div>
+
             {cars.length > 0 && (
                 <>
                     <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">Create an offer for a car</p>
-                    <OfferForm cars={cars}/>
+                    <OfferForm cars={cars} handleOfferClick={handleOfferClick}/>
                 </>
             )}
+
+
+
             <User/>
             </div>
     )

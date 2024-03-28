@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { SERVER_URL } from '../utilComponents/constant';
 import Alert from '../utilComponents/Alert';
 
-const OfferForm = ({cars}) => {
+const OfferForm = ({cars, handleOfferClick}) => {
 
     const[formData, setFormData] = useState({
         name:'',
@@ -77,9 +77,8 @@ const OfferForm = ({cars}) => {
                 //implement different behavoiur regarding the errors the backend provides
                 console.log("Error occurred")
             }
-
             setAlertMessage("You have created a new offer");
-
+            handleOfferClick();
         })
     }
 
