@@ -7,6 +7,7 @@ import DeleteOffer from "./offer/DeleteOffer"
 import EditComponent from "./car/EditComponent";
 import EditOffer from "./offer/EditOffer";
 import User from "./user/User"
+import CarAnimation from "./animated/carAnimation";
 
 function Dashboard() {
 
@@ -73,7 +74,7 @@ function Dashboard() {
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Contact us</button>
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Feedback</button>
-
+            
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the avaliable cars</p>
             <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the cars in the rental service</h3>
 
@@ -110,8 +111,8 @@ function Dashboard() {
                         <p className="text-gray-700 text-base">Price: {offer.price}</p>
                     </div>
                     <div className="px-6 py-4 ">
-                        <DeleteOffer handleOfferClick={handleOfferClick} id={offer.id}/>
                         <EditOffer handleOfferClick={handleOfferClick} cars={cars} offer={offer}/> 
+                        <DeleteOffer handleOfferClick={handleOfferClick} id={offer.id}/>
                     </div>
                     </div>
                 ))}
