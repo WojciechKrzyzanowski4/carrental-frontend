@@ -1,5 +1,8 @@
-import React from 'react';
 import Modal from 'react-modal';
+import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import { SERVER_URL } from '../utilComponents/constant';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const customStyles = {
   content: {
@@ -20,6 +23,10 @@ const customStyles = {
 function Offer({offer}){
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [reservedDates, setReservedDates] = useState([]);
+    const [reservationStarted, setReservationStarted] = useState(false);
+ 
 
     function openModal() {
       document.body.style.overflow = 'hidden';
@@ -35,8 +42,38 @@ function Offer({offer}){
         setIsOpen(false);
     }
 
-    //{"id":1,"name":"Offer 1","description":"Offer 1 description","price":1000.0,"model":"GLE","brand":"Mercedes","year":"2020"}
-   
+    const getDates = async () => {
+      try {
+          let id = offer.id;
+          const response = await fetch(
+              SERVER_URL + '/reservation',
+              { method: 'GET', redirect: "follow", credentials:'include' }
+          );
+          
+          if (!response.ok) {
+              throw new Error('Failed to fetch cars');
+          }
+          const data = await response.json();
+          setReservedDates(data);
+      } catch (error) {
+          console.error('Error fetching cars:', error.message);
+      }
+    }
+
+    const isDateExcluded = (date) => {
+      const dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+      return reservedDates.some(reserved => reserved.reservationDate === dateString);
+    };
+
+    const filterPassedDate = (date) => {
+      return !isDateExcluded(date);
+    };
+
+    useEffect(()=>{
+      getDates();  
+      setReservationStarted(false);
+      }, []);
+
     return(
         <div>
         <button
@@ -59,37 +96,76 @@ function Offer({offer}){
           >
             Close
           </button>
-
-          <div className='flex justify-center items-center p-8 m-4 flex-col text-center i'>
-            <h2 className="text-3xl">This is the section about the car</h2>
-              <div className="text-lg font-semibold">
-                  {offer.brand}
+          {reservationStarted ? (
+            <>
+            <h1> im making a reservaiton on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
+            <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
+            onClick={() => setReservationStarted(false)}
+            >Go back</button>
+            <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
+            >Finalize</button>
+            </>
+           ) : (
+            <>
+              <div class="m-10">
+                <div class="px-4 sm:px-0">
+                  <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
+                  <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">The details and car in question.</p>
+                </div>
+                <div class="mt-6 border-t border-gray-100">
+                  <dl class="divide-y divide-gray-100">
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">Offer</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.name}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">Price</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">${offer.price}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">Car</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.brand} {offer.model} {offer.year}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">Availability</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Yes</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.description}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">See Availability</dt>
+                      <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                        <DatePicker
+                          className='form-control form-control-solid w-250px '
+                          selected={selectedDate}
+                          onChange={date => setSelectedDate(date)}
+                          filterDate={filterPassedDate}
+                          minDate={new Date()}
+                          placeholderText="Select a date" />
+                      </dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt class="text-sm font-medium leading-6 text-gray-900">
+                        <button
+                          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 m-6 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 "
+                          onClick={() => setReservationStarted(true)}
+                        >
+                          Make a reservation
+                        </button>
+                      </dt>
+                      
+                    </div>
+                  </dl>
+                </div>
+                <div class="px-4 sm:px-0">
+                  <h3 class="text-base font-semibold leading-7 text-gray-900">How to proceed?</h3>
+                  <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Please select the date you want your reservation to be on</p>
+                </div>
               </div>
-              <div className="text-lg font-semibold">
-                  {offer.model}
-              </div>
-              <div className="text-lg font-semibold">
-                  {offer.year}
-              </div>
-              <h2 className="text-3xl">This is the section about the offer</h2>
-              <div className="text-lg">
-                  {offer.name}
-              </div>
-              <div className="text-lg">
-                  {offer.price}
-              </div>
-              <div className="text-lg">
-                  {offer.description}
-              </div>
-
-              <button
-                  className="bg-blue-200 hover:bg-blue-800 text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 w-full mt-20"
-              >
-                Make a reservation
-              </button>
-            </div>
-
-          
+            </>
+           )}
         </Modal>
       </div>
     )
