@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { SERVER_URL } from '../utilComponents/constant';
 import 'react-datepicker/dist/react-datepicker.css';
+import PaymentForm from '../payment/PaymentForm';
 
 const customStyles = {
   content: {
@@ -78,7 +79,7 @@ function Offer({offer}){
         <div>
         <button
           onClick={openModal}
-          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
         >
           View Details
         </button>
@@ -92,18 +93,26 @@ function Offer({offer}){
         >
           <button
             onClick={closeModal}
-            className="absolute top-0 right-0 mr-16 mt-24 bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
+            className="absolute top-0 right-0 mr-16 mt-24 bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105"
           >
             Close
           </button>
           {reservationStarted ? (
             <>
-            <h1> im making a reservaiton on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
-            <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
-            onClick={() => setReservationStarted(false)}
-            >Go back</button>
-            <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
-            >Finalize</button>
+            <h1 className='text-center'> im making a reservaiton on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
+            <div className='flex items-center justify-center'>
+            <button 
+            className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
+            onClick={() => setReservationStarted(false)}>
+              Go back
+              </button>
+            <button 
+            className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">
+              Finalize
+              </button>
+            </div>
+          
+            <PaymentForm price={offer.price}/>
             </>
            ) : (
             <>
@@ -138,7 +147,7 @@ function Offer({offer}){
                       <dt class="text-sm font-medium leading-6 text-gray-900">See Availability</dt>
                       <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <DatePicker
-                          className='form-control form-control-solid w-250px '
+                         
                           selected={selectedDate}
                           onChange={date => setSelectedDate(date)}
                           filterDate={filterPassedDate}
@@ -149,7 +158,7 @@ function Offer({offer}){
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                       <dt class="text-sm font-medium leading-6 text-gray-900">
                         <button
-                          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 m-6 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 "
+                          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 m-6 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 "
                           onClick={() => setReservationStarted(true)}
                         >
                           Make a reservation

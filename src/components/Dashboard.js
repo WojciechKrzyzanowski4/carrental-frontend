@@ -75,11 +75,13 @@ function Dashboard() {
             <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Feedback</button>
 
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the avaliable cars</p>
+            <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the cars in the rental service</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-8 ">
                 {cars && cars.map((car) => (
                     <div key={car.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-400">
                     <div className="px-6 py-4 ">
+                        <h3 class="text-base font-semibold leading-7 text-gray-900">Car Information</h3>
                         <div className="font-bold text-xl mb-2">{car.brand}</div>
                         <p className="text-gray-700 text-base">Model: {car.model}</p>
                         <p className="text-gray-700 text-base">Year: {car.year}</p>
@@ -96,11 +98,13 @@ function Dashboard() {
             <CarForm handleClick={handleClick}/>
 
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the current offers</p>
-
+            <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the offers in the rental service</h3>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-8 ">
                 {offers && offers.map((offer) => (
                     <div key={offer.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-400">
                     <div className="px-6 py-4 ">
+                        <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
                         <div className="font-bold text-xl mb-2">{offer.name}</div>
                         <p className="text-gray-700 text-base">Description: {offer.description}</p>
                         <p className="text-gray-700 text-base">Price: {offer.price}</p>
