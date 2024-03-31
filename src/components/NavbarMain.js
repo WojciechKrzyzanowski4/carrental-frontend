@@ -1,8 +1,10 @@
 import React, { useState} from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { IoMdListBox, IoMdApps } from 'react-icons/io';
-import { RiUserLine } from 'react-icons/ri';
-import { IoHeartOutline } from 'react-icons/io5';
+import { IoMdHome } from 'react-icons/io';
+import { RiUserFill } from 'react-icons/ri';
+
+import { IoHeart } from 'react-icons/io5';
 
 const Navbar = ({ onSelectComponent}) => {
  
@@ -15,10 +17,16 @@ const Navbar = ({ onSelectComponent}) => {
 
   // Array containing navigation items
   return (
-    <div className='fixed bg-white flex justify-between items-center h-16 mx-auto px-4 w-full z-10'>
+    <div className='fixed bg-white flex justify-between items-center h-16 mx-auto px-4 w-full z-10 border-b '>
       <h1 className='w-full text-2xl font-bold lg:text-left sm:text-center xs:text-center ml-8'>CAR RENTAL SERVICE</h1>
 
         <ul className='hidden md:flex'>
+            <li
+              className='p-4 hover:bg-[#9DB4C0] rounded-xl m-2 cursor-pointer duration-300'
+              onClick={() => onSelectComponent('home')}
+            >
+              <IoMdHome style={{ color: 'black' }} size={20} />
+            </li>
             <li
               className='p-4 hover:bg-[#9DB4C0] rounded-xl m-2 cursor-pointer duration-300'
               onClick={() => onSelectComponent('dashboard')}
@@ -35,13 +43,13 @@ const Navbar = ({ onSelectComponent}) => {
               className='p-4 hover:bg-[#9DB4C0] rounded-xl m-2 cursor-pointer duration-300'
               onClick={() => onSelectComponent('likes')}
             >
-               <IoHeartOutline style={{ color: 'black' }} size={20} />
+               <IoHeart style={{ color: 'black' }} size={20} />
             </li>
             <li
               className='p-4 hover:bg-[#9DB4C0] rounded-xl m-2 cursor-pointer duration-300'
               onClick={() => {onSelectComponent('me')}}
             >
-               <RiUserLine style={{ color: 'black' }} size={20} />
+               <RiUserFill style={{ color: 'black' }} size={20} />
             </li>
             
         </ul>
@@ -58,6 +66,14 @@ const Navbar = ({ onSelectComponent}) => {
             : 'ease-in-out w-[15%] duration-500 fixed top-0 bottom-0 left-[-100%] z-10'
         }
       >
+
+
+            <li
+              className='p-4 hover:bg-[#9DB4C0] rounded-xl mt-2 cursor-pointer duration-300 flex items-center justify-center'
+              onClick={() => onSelectComponent('home')}
+            >
+              <IoMdHome style={{ color: 'black' }} size={24} />
+            </li>
            <li
               className='p-4 hover:bg-[#9DB4C0] rounded-xl mt-2 cursor-pointer duration-300 flex items-center justify-center'
               onClick={() => {onSelectComponent('dashboard'); handleNav() }}
@@ -74,13 +90,13 @@ const Navbar = ({ onSelectComponent}) => {
               className='p-4 hover:bg-[#9DB4C0] rounded-xl mt-2 cursor-pointer duration-300 flex items-center justify-center'
               onClick={() => {onSelectComponent('likes'); handleNav() }}
             >
-               <IoHeartOutline style={{ color: 'black' }} size={24} />
+               <IoHeart style={{ color: 'black' }} size={24} />
             </li>
             <li
               className='p-4 hover:bg-[#9DB4C0] rounded-xl mt-2 cursor-pointer duration-300 flex items-center justify-center' 
               onClick={() => {onSelectComponent('me'); handleNav() }}
             >
-               <RiUserLine style={{ color: 'black' }} size={24} />
+               <RiUserFill style={{ color: 'black' }} size={24} />
             </li>
        
       </ul>

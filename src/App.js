@@ -6,6 +6,7 @@ import UserPage from './components/UserPage';
 import Offers from './components/Offers';
 import Watched from './components/Watched';
 import Footer from './components/Footer'
+import Home from './components/Home';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
 
   const renderComponent = () => {
     switch (selectedComponent) {
+      case 'home':
+        return  <Home/>
       case 'dashboard':
         return <Dashboard />;
       case 'offers':
