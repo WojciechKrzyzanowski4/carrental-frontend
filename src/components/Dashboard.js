@@ -7,13 +7,15 @@ import DeleteOffer from "./offer/DeleteOffer"
 import EditComponent from "./car/EditComponent";
 import EditOffer from "./offer/EditOffer";
 import User from "./user/User"
+import Button from "./utilComponents/Button";
 
 
 function Dashboard() {
 
     const [cars, setCars] = useState([]);
     const [offers, setOffers] = useState([]);
-    //CREDENTIALS ARE THE MOST IMPORTANT THING IN THE WHOLE WORLD BTW
+    
+
     const getCars = async () => {
         try {
             const response = await fetch(
@@ -83,10 +85,8 @@ function Dashboard() {
         <div className="pt-40">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Manage the System</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
-            <button 
-            onClick = {scrollDown}
-            className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Contact us</button>
-            <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">Feedback</button>
+            <Button variant={'primary'} onClick = {scrollDown}>Contact us</Button>
+            <Button variant={'primary'}>Feedback</Button>
         
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the avaliable cars</p>
             <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the cars in the rental service</h3>
@@ -137,11 +137,8 @@ function Dashboard() {
                     <OfferForm cars={cars} handleOfferClick={handleOfferClick}/>
                 </>
             )}
-
-
-
             <User/>
-            </div>
+        </div>
     )
 
 }

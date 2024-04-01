@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from 'react-modal';
 import { SERVER_URL } from "../utilComponents/constant";
+import Button from "../utilComponents/Button";
 
 const customStyles = {
     content: {
@@ -81,7 +82,7 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
 
     return (
         <div>
-          <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105 m-4 w-[60%]" onClick={openModal}>Edit</button>
+          <Button variant={'primary'}onClick={openModal}>Edit</Button>
           <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
@@ -104,7 +105,7 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
                     <option key={car.id} value={car.id}>{`${car.brand} ${car.model} (${car.year})`}</option>
                   ))}
                 </select>
-                <button className=" bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105 w-[100%]" type='submit'>Edit</button>
+                <Button variant={'big'} type='submit'>Edit</Button>
               </form>
               <button className="absolute top-4 right-4 bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105" onClick={closeModal}>X</button>
             </div>

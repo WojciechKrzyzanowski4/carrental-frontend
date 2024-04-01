@@ -1,3 +1,4 @@
+import Button from "../utilComponents/Button";
 import { SERVER_URL } from "../utilComponents/constant";
 
 function CarForm({handleClick}) {
@@ -45,12 +46,11 @@ function CarForm({handleClick}) {
           placeholder="Enter car year"
           className="block w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
         />
-        <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  w-full"
+        <Button variant={'big'}
           type="submit"
-         
         >
           Add car
-        </button>
+        </Button>
       </form>
     )
 

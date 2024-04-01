@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { SERVER_URL } from '../utilComponents/constant';
 import Alert from '../utilComponents/Alert';
+import Button from '../utilComponents/Button';
 
 const OfferForm = ({cars, handleOfferClick}) => {
 
@@ -132,13 +133,13 @@ const OfferForm = ({cars, handleOfferClick}) => {
                         ))}
                     </select>
                 </div>
-                <button
+                <Button
                     type="submit"
                     onClick={() => handleShowAlert()}
-                    className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 w-full"
+                    variant={'big'}
                 >
                     Submit
-                </button>
+                </Button>
             </form>
 
             {showAlert && (

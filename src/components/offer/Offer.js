@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import { SERVER_URL } from '../utilComponents/constant';
 import 'react-datepicker/dist/react-datepicker.css';
 import PaymentForm from '../payment/PaymentForm';
+import Button from '../utilComponents/Button';
 
 const customStyles = {
   content: {
@@ -16,8 +17,7 @@ const customStyles = {
     backgroundColor: 'white',
     border: 'none',
     paddingTop: '8rem',
-    margin: '0rem'
-    
+    margin: '0rem' 
   },
 };
 
@@ -77,12 +77,7 @@ function Offer({offer}){
 
     return(
         <div>
-        <button
-          onClick={openModal}
-          className="bg-[#e0fbfc] hover:bg-[#9DB4C0] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-        >
-          View Details
-        </button>
+       <Button variant={'primary'} onClick={openModal}>View Details</Button>
         <Modal
          isOpen={modalIsOpen}
          onAfterOpen={afterOpenModal}
@@ -91,32 +86,23 @@ function Offer({offer}){
          style={customStyles}
          contentLabel="Example Modal"
         >
-          <button
-            onClick={closeModal}
-            className="absolute top-0 right-0 mr-16 mt-24 bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-          >
-            Close
-          </button>
+          <div className='absolute top-16 right-16'>
+            <Button variant={'close'} onClick={closeModal}>Close</Button>
+          </div>
+         
           {reservationStarted ? (
             <>
             <h1 className='text-center'> im making a reservaiton on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
             <div className='flex items-center justify-center'>
-            <button 
-            className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
-            onClick={() => setReservationStarted(false)}>
-              Go back
-              </button>
-            <button 
-            className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60">
-              Finalize
-              </button>
+            <Button variant={'primary'} onClick={() => setReservationStarted(false)}>Go back</Button>
+            <Button variant={"primary"}>Finalize</Button>
             </div>
           
             <PaymentForm price={offer.price}/>
             </>
            ) : (
             <>
-              <div class="mx-40">
+              <div class="mx-10">
                 <div class="px-4 sm:px-0">
                   <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
                   <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">The details and car in question.</p>
@@ -147,7 +133,6 @@ function Offer({offer}){
                       <dt class="text-sm font-medium leading-6 text-gray-900">See Availability</dt>
                       <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <DatePicker
-                         
                           selected={selectedDate}
                           onChange={date => setSelectedDate(date)}
                           filterDate={filterPassedDate}
@@ -157,12 +142,11 @@ function Offer({offer}){
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                       <dt class="text-sm font-medium leading-6 text-gray-900">
-                        <button
-                          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 m-6 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 "
+                        <Button variant={"primary"}
                           onClick={() => setReservationStarted(true)}
                         >
                           Make a reservation
-                        </button>
+                        </Button>
                       </dt>
                       
                     </div>

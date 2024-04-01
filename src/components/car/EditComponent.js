@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { SERVER_URL } from '../utilComponents/constant';
+import Button from '../utilComponents/Button';
 
 const customStyles = {
     content: {
@@ -25,12 +26,11 @@ function EditComponent({car, handleClick}){
     }
     
     function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#000';
+        subtitle.style.color = '#000';
     }
     
     function closeModal() {
-    setIsOpen(false);
+        setIsOpen(false);
     }
 
     function handleSubmit(event) {
@@ -56,15 +56,13 @@ function EditComponent({car, handleClick}){
             }else{
                 alert("car edited");
             }
-
             handleClick();
-            
         })
     }
 
     return(
        <div>
-        <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 shadow-md rounded-lg transition duration-300 ease-in-out transform hover:scale-105 m-4 w-[60%]" onClick={openModal}>Edit</button>
+        <Button variant={"primary"} onClick={openModal}>Edit</Button>
         <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
