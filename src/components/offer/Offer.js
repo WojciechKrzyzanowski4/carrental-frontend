@@ -79,7 +79,7 @@ function Offer({offer}){
         <div>
         <button
           onClick={openModal}
-          className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+          className="bg-[#e0fbfc] hover:bg-[#9DB4C0] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
         >
           View Details
         </button>
@@ -116,7 +116,7 @@ function Offer({offer}){
             </>
            ) : (
             <>
-              <div class="m-10">
+              <div class="mx-40">
                 <div class="px-4 sm:px-0">
                   <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
                   <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">The details and car in question.</p>

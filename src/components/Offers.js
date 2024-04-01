@@ -75,8 +75,8 @@ function Offers() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 m-4 justify-center items-center mt-40 pt-20">
             {offers.map((offer) => (
-                <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-overflow-hidden shadow-lg">
-                    <div className="w-full h-52 bg-cover bg-center" style={{ backgroundImage: `url(${offer.imageUrl})` }}>
+                <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
+                    <div className="w-full h-80 bg-cover bg-center" style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-4 right-4">
                             <button onClick={() => handleShowAlert(offer.id)} className="rounded-full bg-[#e0fbfc] p-2 text-gray-500">
                                 <IoHeartOutline className="w-12 h-12" />
