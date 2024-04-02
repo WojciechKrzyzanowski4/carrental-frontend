@@ -57,13 +57,6 @@ function Dashboard() {
         }
     }
 
-    const scrollDown = () => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
     function handleClick() {
         getCars();
     }
@@ -74,10 +67,6 @@ function Dashboard() {
 
     useEffect(()=>{
         document.body.style.overflow = 'visible';
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
         getCars();
         getOffers();
     }, []);
