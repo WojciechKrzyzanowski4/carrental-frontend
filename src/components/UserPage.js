@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import User from './user/User';
+import Invoice from './utilComponents/Invoice';
 
 
 function UserPage() {
@@ -25,6 +26,7 @@ function UserPage() {
                     <User/>
                 </div>
             </div>
+            <Invoice/>
         </div>
     );
 }

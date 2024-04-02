@@ -5,6 +5,7 @@ import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
 import Button from "./utilComponents/Button";
 import ContactForm from "./utilComponents/ContactForm";
+import CarAnimation from "./animated/carAnimation";
 
 function Offers() {
     const [offers, setOffers] = useState([]);
@@ -59,7 +60,7 @@ function Offers() {
 
     return (
         <div className="pt-40 pb-4 bg-white">
-          
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Find Your Perfect Ride</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Explore our wide range of rental cars with unbeatable offers</p>
             <p className="text-lg md:text-xl lg:text-2xl mb-16 ">We promise excellence and an unforgetable expericence</p>

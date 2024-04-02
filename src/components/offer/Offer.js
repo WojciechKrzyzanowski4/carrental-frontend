@@ -38,6 +38,7 @@ function Offer({ offer }) {
   // Function called after modal has opened
   function afterOpenModal() {
     // No action required
+    getDates();
   }
 
   // Function to close the modal
@@ -77,7 +78,7 @@ function Offer({ offer }) {
 
   // Fetch reserved dates when component mounts
   useEffect(() => {
-    getDates();
+    //getDates();
     setReservationStarted(false);
   }, []);
 

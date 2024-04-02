@@ -35,9 +35,6 @@ const ContactForm = () => {
         setIsOpen(false);
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
 
     return (
         <div>
