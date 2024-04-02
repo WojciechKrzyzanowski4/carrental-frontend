@@ -94,6 +94,7 @@ function Offer({ offer }) {
         ariaHideApp={false}
         style={customStyles}
         contentLabel="Offer Modal"
+       
       >
         <div className='absolute top-16 right-16'>
           {/* Button to close the modal */}

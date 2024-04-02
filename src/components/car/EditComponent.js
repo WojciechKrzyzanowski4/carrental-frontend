@@ -74,6 +74,7 @@ function EditComponent({ car, handleClick }) {
                 contentLabel="Car-edition-Modal"
                 className="modal fixed inset-0 flex items-center justify-center"
                 overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+                ariaHideApp={false}
             >
                 <div className="modal-container mx-auto p-16 bg-white rounded-lg shadow-lg">
                     <h2 className="text-2xl font-bold mb-4" ref={(_subtitle) => (subtitle = _subtitle)}>Editing the Car</h2>

@@ -50,6 +50,7 @@ const ContactForm = () => {
             contentLabel="Offer-edition-Modal"
             className="modal fixed inset-0 bg-white rounded-xl"
             overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+            ariaHideApp={false}
           >
             <div className="modal-container mx-auto">
               <h2 className="text-2xl font-bold mb-4" ref={(_subtitle) => (subtitle = _subtitle)}></h2>
