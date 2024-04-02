@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import Button from './utilComponents/Button';
+import ContactForm from './utilComponents/ContactForm';
 
 
 function Home() {
@@ -18,7 +19,7 @@ function Home() {
                 <h1 class="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">For 15 years we were the leaders in our field.</h1>
                 <p class="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">We’re different. Car renatl service is the only platform that lets you drive our cars, the exact way you want to drive them.</p>
                 <div class="flex flex-wrap items-center justify-center">
-                   <Button variant={'primary'}>Contact Us</Button>
+                  <ContactForm/>
                    <Button variant={'outline-black'}>Feedback</Button>
                 </div>
                 </div>
@@ -43,6 +44,7 @@ function Home() {
              </div>
             </div>
         </div>
+        <ContactForm/>
         </>
        
     );

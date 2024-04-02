@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { SERVER_URL } from "./utilComponents/constant";
-import { IoHeartOutline, IoHeart } from 'react-icons/io5';
+import { IoHeart } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
-import CarAnimation from "./animated/carAnimation";
 import Button from "./utilComponents/Button";
+import ContactForm from "./utilComponents/ContactForm";
 
 function Offers() {
     const [offers, setOffers] = useState([]);
@@ -50,19 +50,9 @@ function Offers() {
         }, 5000); 
     };
 
-    const scrollDown = () => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
 
     useEffect(() => {
         document.body.style.overflow = 'visible';
-        window.scrollTo({
-            top: 0,
-            behavior: 'instant'
-        });
         getOffers();
 
     }, []);
@@ -73,8 +63,10 @@ function Offers() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Find Your Perfect Ride</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Explore our wide range of rental cars with unbeatable offers</p>
             <p className="text-lg md:text-xl lg:text-2xl mb-16 ">We promise excellence and an unforgetable expericence</p>
-            <Button variant={'primary'} onClick = {scrollDown}>Contact us</Button>
-            <Button variant={'primary'}>Feedback</Button>
+            <div class="flex flex-wrap items-center justify-center">
+                <ContactForm/>
+                <Button variant={'outline-black'}>Feedback</Button>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 m-4 justify-center items-center mt-40 pt-20">
             {offers.map((offer) => (

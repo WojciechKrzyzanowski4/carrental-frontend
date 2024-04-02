@@ -2,9 +2,23 @@ import React from 'react';
 import Modal from 'react-modal';
 import { SERVER_URL } from '../utilComponents/constant';
 import Button from '../utilComponents/Button';
-import { customStyles } from './EditComponent';
 
-export function EditComponent({ car, handleClick }) {
+
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+};
+
+
+
+function EditComponent({ car, handleClick }) {
 
     let subtitle;
 
@@ -76,3 +90,5 @@ export function EditComponent({ car, handleClick }) {
         </div>
     );
 }
+
+export default EditComponent;

@@ -34,17 +34,17 @@ function CarForm({handleClick}) {
         <input
           name="brand"
           placeholder="Enter car brand"
-          className="block w-full px-4 py-2 mt-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+          className="block w-full px-4 py-2 mt-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
         />
         <input
           name="model"
           placeholder="Enter car model"
-          className="block w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+          className="block w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
         />
         <input
           name="year"
           placeholder="Enter car year"
-          className="block w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+          className="block w-full px-4 py-2 mb-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
         />
         <Button variant={'big'}
           type="submit"

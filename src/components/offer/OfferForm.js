@@ -94,7 +94,7 @@ const OfferForm = ({cars, handleOfferClick}) => {
                         placeholder='Enter offer name'
                         value={formData.name}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
                     />
                 </div>
                 <div className="mb-4">
@@ -106,7 +106,7 @@ const OfferForm = ({cars, handleOfferClick}) => {
                         placeholder="Enter offer description"
                         value={formData.description}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
                     />
                 </div>
                 <div className="mb-4">
@@ -117,7 +117,7 @@ const OfferForm = ({cars, handleOfferClick}) => {
                         placeholder="Enter offer price"
                         value={formData.price}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
                     />
                 </div>
                 <div className="mb-4">
@@ -125,7 +125,7 @@ const OfferForm = ({cars, handleOfferClick}) => {
                         name="carId"
                         value={formData.carId}
                         onChange={handleChange}
-                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
+                        className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black"
                     >
                         <option value="">Select a car</option>
                         {cars.map(car => (
