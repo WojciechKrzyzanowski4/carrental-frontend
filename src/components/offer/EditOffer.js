@@ -40,23 +40,11 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
         const formData = new FormData(event.target);
         const formJson = Object.fromEntries(formData.entries());
 
-        if (!formJson.name) {
-            alert("name not provided");
-            return; // Prevent form submission
-        }
-        if (!formJson.description) {
-            alert("name not provided");
-            return; // Prevent form submission
-        }
-        if (!formJson.price) {
-            alert("name not provided");
-            return; // Prevent form submission
-        }
-        if (!formJson.carId) {
-            alert("name not provided");
-            return; // Prevent form submission
-        }
-        
+        if (!formJson.name || !formJson.description || !formJson.price || !formJson.carId) {
+          alert("Please fill in all fields");
+          return;
+        } 
+
         const requestOptions = {
             method: "PUT", 
             headers: {'Content-Type' : 'application/json'},
@@ -64,19 +52,14 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
             credentials:'include'
         }
 
-        fetch(
-            SERVER_URL + '/offer/edit',
-            requestOptions
-        ).then(async response => {
+        fetch(SERVER_URL + '/offer/edit', requestOptions).then(async response => {
             if(!response.ok){
                 console.log("Error occurred")
                 alert("the other admin was faster and managed to delete the offer before you could edit it");
             }else{
                 alert("offer edited");
             }
-
             handleOfferClick();
-            
         })
     }
 

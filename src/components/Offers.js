@@ -69,7 +69,7 @@ function Offers() {
 
     return (
         <div className="pt-40 pb-4 bg-white">
-            <CarAnimation/>
+          
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Find Your Perfect Ride</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Explore our wide range of rental cars with unbeatable offers</p>
             <p className="text-lg md:text-xl lg:text-2xl mb-16 ">We promise excellence and an unforgetable expericence</p>
@@ -81,8 +81,8 @@ function Offers() {
                 <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
                     <div className="w-full h-80 bg-cover bg-center" /*this is here is somebody wants to add images*/ style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-4 right-4">
-                            <button onClick={() => handleShowAlert(offer.id)} className="rounded-full bg-[#e0fbfc] p-2 text-gray-500 hover:text-black">
-                                <IoHeart className="w-12 h-12 hover:w-14 hover:h-14" />
+                            <button onClick={() => handleShowAlert(offer.id)} className="rounded-full bg-[#e0fbfc] p-2 text-gray-500 hover:text-black ">
+                                <IoHeart className="w-12 h-12 transition duration-300 ease-in-out" />
                             </button>
                         </div>
                     </div>

@@ -84,7 +84,7 @@ const OfferForm = ({cars, handleOfferClick}) => {
     }
 
     return (
-        <div className="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-400 p-10">
+        <div className="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-[#253237] p-10">
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     

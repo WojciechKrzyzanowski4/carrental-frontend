@@ -38,7 +38,7 @@ const Watched = () =>{
                     <div className="w-full h-80 bg-cover bg-center" /*this is here is somebody wants to add images*/ style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-8 right-8">
                             <button className="rounded-full bg-[#e0fbfc] p-2 text-gray-500 hover:text-black">
-                                <IoHeartDislike className="w-12 h-12 hover:w-14 hover:h-14" />
+                                <IoHeartDislike className="w-12 h-12" />
                             </button>
                         </div>
                     </div>

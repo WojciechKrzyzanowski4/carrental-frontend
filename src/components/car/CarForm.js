@@ -30,7 +30,7 @@ function CarForm({handleClick}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-400 p-10">
+        <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-[#253237] p-10">
         <input
           name="brand"
           placeholder="Enter car brand"

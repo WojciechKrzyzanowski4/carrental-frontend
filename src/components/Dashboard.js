@@ -86,14 +86,14 @@ function Dashboard() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Manage the System</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
             <Button variant={'primary'} onClick = {scrollDown}>Contact us</Button>
-            <Button variant={'primary'}>Feedback</Button>
+            <Button variant={'outline-black'}>Feedback</Button>
         
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the avaliable cars</p>
             <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the cars in the rental service</h3>
            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-8 ">
                 {cars && cars.map((car) => (
-                    <div key={car.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-400">
+                    <div key={car.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-[#253237]">
                     <div className="px-6 py-4 ">
                         <h3 class="text-base font-semibold leading-7 text-gray-900">Car Information</h3>
                         <div className="font-bold text-xl mb-2">{car.brand}</div>
@@ -116,7 +116,7 @@ function Dashboard() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-8 ">
                 {offers && offers.map((offer) => (
-                    <div key={offer.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-400">
+                    <div key={offer.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-[#253237]">
                     <div className="px-6 py-4 ">
                         <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
                         <div className="font-bold text-xl mb-2">{offer.name}</div>
@@ -137,7 +137,7 @@ function Dashboard() {
                     <OfferForm cars={cars} handleOfferClick={handleOfferClick}/>
                 </>
             )}
-            <User/>
+           
         </div>
     )
 
