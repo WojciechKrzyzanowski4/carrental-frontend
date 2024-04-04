@@ -10,7 +10,7 @@ function UserPage() {
     }, []);
 
     return(
-        <div className="pt-16">
+        <div className="pt-16 text-center">
             <div className="rounded-xl bg-[#e0fbfc] shadow-md m-8 h-[400px]">
             
             </div>

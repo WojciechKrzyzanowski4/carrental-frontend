@@ -72,27 +72,27 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className="pt-40">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Manage the System</h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
-            <div class="flex flex-wrap items-center justify-center">
+        <div className="pt-40 text-center">
+            <h1 className="text-4xl md:text-5xl text-center lg:text-6xl font-bold leading-tight mb-4">Manage the System</h1>
+            <p className="text-lg md:text-xl text-center lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
+            <div className="flex flex-wrap items-center justify-center">
                 <ContactForm/>
                 <Button variant={'outline-black'}>Feedback</Button>
             </div>
         
-            <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the avaliable cars</p>
-            <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the cars in the rental service</h3>
+            <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40 text-center">All the avaliable cars</p>
+            <h3 className="text-base leading-7 text-gray-900 text-center">Add, edit and delete all the cars in the rental service</h3>
            
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-8 ">
                 {cars && cars.map((car) => (
                     <div key={car.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-[#253237]">
                     <div className="px-6 py-4 ">
-                        <h3 class="text-base font-semibold leading-7 text-gray-900">Car Information</h3>
-                        <div className="font-bold text-xl mb-2">{car.brand}</div>
-                        <p className="text-gray-700 text-base">Model: {car.model}</p>
-                        <p className="text-gray-700 text-base">Year: {car.year}</p>
+                        <h3 className="text-base font-semibold leading-7 text-gray-900 text-center">Car Information</h3>
+                        <div className="font-bold text-xl mb-2 text-center">{car.brand}</div>
+                        <p className="text-gray-700 text-base text-center">Model: {car.model}</p>
+                        <p className="text-gray-700 text-base text-center">Year: {car.year}</p>
                     </div>
-                    <div className="px-6 py-4 ">
+                    <div className="px-6 py-4 flex flex-col items-center justify-center">
                         <EditComponent handleClick={handleClick} car={car}/>
                         <DeleteComponent handleClick={handleClick} id={car.id}/>
                     </div>
@@ -104,13 +104,13 @@ function Dashboard() {
             <CarForm handleClick={handleClick}/>
 
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40">All the current offers</p>
-            <h3 class="text-base  leading-7 text-gray-900">Add, edit and delete all the offers in the rental service</h3>
+            <h3 className="text-base  leading-7 text-gray-900">Add, edit and delete all the offers in the rental service</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-8 ">
                 {offers && offers.map((offer) => (
                     <div key={offer.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-[#253237]">
                     <div className="px-6 py-4 ">
-                        <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
+                        <h3 className="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
                         <div className="font-bold text-xl mb-2">{offer.name}</div>
                         <p className="text-gray-700 text-base">Description: {offer.description}</p>
                         <p className="text-gray-700 text-base">Price: {offer.price}</p>

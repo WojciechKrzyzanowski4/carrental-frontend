@@ -118,30 +118,30 @@ function Offer({ offer }) {
         ) : (
           // Offer details and reservation selection
           <>
-            <div class="mx-10">
-              <div class="px-4 sm:px-0">
-                <h3 class="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
-                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Details about the offer and the car.</p>
+            <div className="mx-10">
+              <div className="px-4 sm:px-0">
+                <h3 className="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Details about the offer and the car.</p>
               </div>
-              <div class="mt-6 border-t border-gray-100">
-                <dl class="divide-y divide-gray-100">
+              <div className="mt-6 border-t border-gray-100">
+                <dl className="divide-y divide-gray-100">
                   {/* Offer details */}
-                  <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">Offer</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.name}</dd>
+                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">Offer</dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.name}</dd>
                   </div>
-                  <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">Price</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">${offer.price}</dd>
+                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">Price</dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">${offer.price}</dd>
                   </div>
-                  <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">Car</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.brand} {offer.model} {offer.year}</dd>
+                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">Car</dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{offer.brand} {offer.model} {offer.year}</dd>
                   </div>
                   {/* Date selection for reservation */}
-                  <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">See Availability</dt>
-                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">See Availability</dt>
+                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <DatePicker
                         selected={selectedDate}
                         onChange={date => setSelectedDate(date)}
@@ -151,8 +151,8 @@ function Offer({ offer }) {
                     </dd>
                   </div>
                   {/* Button to start reservation */}
-                  <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt class="text-sm font-medium leading-6 text-gray-900">
+                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900">
                       <Button variant={"primary"}
                         onClick={() => setReservationStarted(true)}
                       >
@@ -162,9 +162,9 @@ function Offer({ offer }) {
                   </div>
                 </dl>
               </div>
-              <div class="px-4 sm:px-0">
-                <h3 class="text-base font-semibold leading-7 text-gray-900">How to proceed?</h3>
-                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Please select the date you want your reservation to be on</p>
+              <div className="px-4 sm:px-0">
+                <h3 className="text-base font-semibold leading-7 text-gray-900">How to proceed?</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Please select the date you want your reservation to be on</p>
               </div>
             </div>
           </>

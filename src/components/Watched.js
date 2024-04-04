@@ -57,13 +57,13 @@ const Watched = () =>{
     }, []);
 
     return(
-        <div className="pt-16">
+        <div className="pt-16 text-center">
             <div className="grid grid-cols-1 gap-6 m-4 justify-center items-center pt-20">
             {offers.map((offer) => (
                 <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
                     <div className="w-full h-80 bg-cover bg-center" /*this is here is somebody wants to add images*/ style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-8 right-8">
-                            <button onClick={() => handleShowAlert(offer.id)} className="rounded-full bg-[#e0fbfc] p-2 text-gray-500 hover:text-black">
+                            <button onClick={() => handleShowAlert(offer.id)} className="rounded-full p-2 transition duration-300 ease-in-out text-red-500 hover:text-gray-500">
                                 <IoHeartDislike className="w-12 h-12" />
                             </button>
                         </div>
