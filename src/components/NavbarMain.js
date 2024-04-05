@@ -21,7 +21,7 @@ const NavItemMobile = ({ icon, to, onClick }) => (
   </li>
 );
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   const [nav, setNav] = useState(false);
 
   const handleNav = useCallback(() => {
@@ -29,11 +29,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='fixed bg-white flex justify-between items-center h-16 mx-auto px-4 w-full border-b'>
+    <div className='fixed bg-white flex justify-between items-center h-16 mx-auto px-4 w-full border-b z-10'>
       <h1 className='w-full text-2xl font-bold lg:text-left sm:text-center xs:text-center ml-8'>CAR RENTAL SERVICE</h1>
       <ul className='hidden md:flex gap-4'>
         <NavItem icon={<IoMdHome style={{ color: 'black' }} size={20} />} to="/" />
-        <NavItem icon={<IoMdListBox style={{ color: 'black' }} size={20} />} to="/dashboard" />
+        {user.role==="ROLE_ADMIN" && (<NavItem icon={<IoMdListBox style={{ color: 'black' }} size={20} />} to="/dashboard" />)}
         <NavItem icon={<IoMdApps style={{ color: 'black' }} size={20} />} to="/offers" />
         <NavItem icon={<IoHeart style={{ color: 'black' }} size={20} />} to="/likes" />
         <NavItem icon={<RiUserFill style={{ color: 'black' }} size={20} />} to="/me" />
@@ -43,7 +43,7 @@ const Navbar = () => {
       </div>
       <ul className={nav ? 'fixed md:hidden left-0 top-0 w-[15%] h-full bg-[#e0fbfc] ease-in-out duration-500 z-10 flex content-center items-center flex-col' : 'ease-in-out w-[15%] duration-500 fixed top-0 bottom-0 left-[-100%] z-10'}>
         <NavItemMobile icon={<IoMdHome style={{ color: 'black' }} size={24} />} to="/" onClick={handleNav} />
-        <NavItemMobile icon={<IoMdListBox style={{ color: 'black' }} size={24} />} to="/dashboard" onClick={handleNav} />
+        {user.role==="ROLE_ADMIN" && (<NavItemMobile icon={<IoMdListBox style={{ color: 'black' }} size={24} />} to="/dashboard" onClick={handleNav} />)}
         <NavItemMobile icon={<IoMdApps style={{ color: 'black' }} size={24} />} to="/offers" onClick={handleNav} />
         <NavItemMobile icon={<IoHeart style={{ color: 'black' }} size={24} />} to="/likes" onClick={handleNav} />
         <NavItemMobile icon={<RiUserFill style={{ color: 'black' }} size={24} />} to="/me" onClick={handleNav} />

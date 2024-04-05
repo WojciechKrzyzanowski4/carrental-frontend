@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { SERVER_URL } from "../utilComponents/constant";
+import React, { useState } from "react";
+
 import Button from "../utilComponents/Button";
 
-function User() {
-    const [user, setUser] = useState();
-    const [managed, setManaged] = useState();
-
-    const getUser = async () => {
-        try {
-            const response = await fetch(
-                SERVER_URL + '/user',
-                { method: 'GET', credentials: 'include' }
-            );
-
-            const userData = await response.json();
-            setUser(userData);
-        } catch (error) {
-            console.error('Error fetching user data:', error);
-        }
-    };
-
-    useEffect(() => {
-        getUser();
-    }, []);
-
+function User({user}) {
     return (
         <div className="max-w-xxl mx-auto bg-white shadow-md rounded-xl overflow-hidden border border-[#253237] p-10">
             {user ? (

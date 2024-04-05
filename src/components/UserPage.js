@@ -3,7 +3,7 @@ import User from './user/User';
 import Invoice from './utilComponents/Invoice';
 
 
-function UserPage() {
+function UserPage({user}) {
 
     useEffect(()=>{
         document.body.style.overflow = 'visible';
@@ -23,7 +23,7 @@ function UserPage() {
 
                 </div>
                 <div className="p-4">
-                    <User/>
+                    <User user={user}/>
                 </div>
             </div>
             <Invoice/>
