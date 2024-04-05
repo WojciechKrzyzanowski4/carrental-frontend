@@ -3,6 +3,7 @@ import User from './user/User';
 import Invoice from './utilComponents/Invoice';
 
 
+
 function UserPage({user}) {
 
     useEffect(()=>{
@@ -24,6 +25,7 @@ function UserPage({user}) {
                 </div>
                 <div className="p-4">
                     <User user={user}/>
+                    
                 </div>
             </div>
             <Invoice/>

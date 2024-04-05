@@ -32,9 +32,6 @@ function User({user}) {
                     </div>
                   </dl>
                 </div>
-                <div className="px-4 sm:px-0">
-                  <Button variant={'outline-black'}>Manage account</Button>
-                </div>
               </div>
             ) : (
                 <p className="text-center">Loading user data...</p>
