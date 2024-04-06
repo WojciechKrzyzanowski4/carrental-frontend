@@ -3,6 +3,9 @@ import { SERVER_URL } from "./utilComponents/constant";
 import { IoHeartDislike } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
+import ReservationCard from "./reservation/ReservationCard";
+import ContactForm from "./utilComponents/Button";
+import Button from "./utilComponents/Button";
 
 const Watched = () =>{
 
@@ -95,15 +98,55 @@ const Watched = () =>{
                 </div>
             ))}
             </div>
-            <div className="grid grid-cols-1 gap-6 m-4 justify-center items-center pt-20">
-            {reservations.map((reservation) => (
-                <div key={reservation.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
-                    <h2 className="mb-4 font-sans text-xl font-semibold text-white"> Reservation for: {reservation.reservationDate}</h2>
-                    <h2 className="mb-4 font-sans text-xl font-semibold text-white"> The reservation is for this offer: {reservation.offerName}</h2>
-                 
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 m-4 justify-center items-center pt-20">
+                {reservations.map((reservation) => (
+                    <div key={reservation.id} className="relative flex flex-col rounded-xl bg-center border border-[#253237] bg-overflow-hidden shadow-md">
+                        <div className="text-2xl text-center pl-5 mt-5">
+                            Reservation {reservation.id}
+                        </div>
+
+                        <div className="m-6 border-t border-gray-100">
+                            <dl className="divide-y divide-gray-100">
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Reservation's date</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{reservation.reservationDate}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Offer</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{reservation.offer.name}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Price</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">${reservation.offer.price}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Car</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{reservation.offer?.brand} {reservation.offer.model} {reservation.offer.year}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Placed by</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{reservation.user.name}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">Contanct</dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{reservation.user.email}</dd>
+                            </div>
+                            <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                <dt className="text-sm font-medium leading-6 text-gray-900">
+                                    If something went wrong:
+                                </dt>
+                                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                   <Button variant={'outline-black'}>something</Button>
+                                </dd>
+                                
+                                
+                                
+                            </div>
+                            </dl>
+                        </div>
+                    </div>
+                ))}
                 </div>
-            ))}
-            </div>
             {showAlert && (
             <Alert
                 message="An offer has been disliked"
