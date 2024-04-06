@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import generatePDF from 'react-to-pdf';
 
-const Invoice = ({props}) => {
+const Invoice = ({reservation}) => {
    const targetRef = useRef();
    return (
       <div className="bg-white pt-10">

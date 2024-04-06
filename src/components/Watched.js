@@ -3,8 +3,6 @@ import { SERVER_URL } from "./utilComponents/constant";
 import { IoHeartDislike } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
-import ReservationCard from "./reservation/ReservationCard";
-import ContactForm from "./utilComponents/Button";
 import Button from "./utilComponents/Button";
 
 const Watched = () =>{
@@ -138,9 +136,6 @@ const Watched = () =>{
                                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                    <Button variant={'outline-black'}>something</Button>
                                 </dd>
-                                
-                                
-                                
                             </div>
                             </dl>
                         </div>

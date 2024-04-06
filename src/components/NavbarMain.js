@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { IoMdListBox, IoMdApps, IoMdHome } from 'react-icons/io';
 import { RiUserFill } from 'react-icons/ri';
-import { IoHeart } from 'react-icons/io5';
+import { IoHeart, IoLogOut } from 'react-icons/io5';
+import { SERVER_URL } from './utilComponents/constant';
 
 const NavItem = ({ icon, text, to, onClick }) => (
   <li className='hover:bg-[#9DB4C0] rounded-xl cursor-pointer duration-300' onClick={onClick}>
@@ -29,14 +30,15 @@ const Navbar = ({user}) => {
   }, []);
 
   return (
-    <div className='fixed bg-white flex justify-between items-center h-16 mx-auto px-4 w-full border-b z-10'>
+    <div className='fixed bg-white flex justify-between items-center mx-auto px-4 w-full z-10 border-b'>
       <h1 className='w-full text-2xl font-bold lg:text-left sm:text-center xs:text-center ml-8'>CAR RENTAL SERVICE</h1>
-      <ul className='hidden md:flex gap-4'>
+      <ul /*hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4*/className='hidden md:flex gap-2 rounded-xl bg-white p-1'>
         <NavItem icon={<IoMdHome style={{ color: 'black' }} size={20} />} to="/" />
         {user.role==="ROLE_ADMIN" && (<NavItem icon={<IoMdListBox style={{ color: 'black' }} size={20} />} to="/dashboard" />)}
         <NavItem icon={<IoMdApps style={{ color: 'black' }} size={20} />} to="/offers" />
         <NavItem icon={<IoHeart style={{ color: 'black' }} size={20} />} to="/likes" />
         <NavItem icon={<RiUserFill style={{ color: 'black' }} size={20} />} to="/me" />
+        <NavItem icon={<IoLogOut style={{ color: 'black' }} size={20} />} to={SERVER_URL+"/logout"}/>
       </ul>
       <div onClick={handleNav} className='block md:hidden z-10'>
         {nav ? <AiOutlineClose style={{ color: 'black' }} size={20} /> : <AiOutlineMenu style={{ color: 'black' }} size={20} />}
@@ -47,6 +49,7 @@ const Navbar = ({user}) => {
         <NavItemMobile icon={<IoMdApps style={{ color: 'black' }} size={24} />} to="/offers" onClick={handleNav} />
         <NavItemMobile icon={<IoHeart style={{ color: 'black' }} size={24} />} to="/likes" onClick={handleNav} />
         <NavItemMobile icon={<RiUserFill style={{ color: 'black' }} size={24} />} to="/me" onClick={handleNav} />
+        <NavItem icon={<IoLogOut style={{ color: 'black' }} size={24} />} to={SERVER_URL+"/logout"} onClick={handleNav}/>
       </ul>
     </div>
   );

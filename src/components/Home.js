@@ -3,6 +3,8 @@ import Button from './utilComponents/Button';
 import ContactForm from './utilComponents/ContactForm';
 
 
+
+
 function Home() {
 
     useEffect(()=>{
@@ -44,7 +46,6 @@ function Home() {
              </div>
             </div>
         </div>
-      
         </>
        
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaXTwitter, FaYahoo, FaYoutube } from 'react-icons/fa6';
 
 function Footer() {
     return (
@@ -18,11 +18,17 @@ function Footer() {
                     <div className="w-full md:w-1/3">
                         <h2 className="text-lg font-semibold mb-4">Follow Us</h2>
                         <div className="flex items-center justify-center">
-                            <a href="#" className="mr-4 ">
+                            <a href="https://facebook.com" className="mr-4 ">
                                 <FaFacebook className="w-6 h-6" />
                             </a>
-                            <a href="#" >
-                                <FaTwitter className="w-6 h-6t" />
+                            <a href="https://x.com" className="mr-4 ">
+                                <FaXTwitter className="w-6 h-6t" />
+                            </a>
+                            <a href="https://youtube.com" className="mr-4 ">
+                                <FaYoutube className="w-6 h-6" />
+                            </a>
+                            <a href="https://yahoo.com" >
+                                <FaYahoo className="w-6 h-6t" />
                             </a>
                         </div>
                     </div>
