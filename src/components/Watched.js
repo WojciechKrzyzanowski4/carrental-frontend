@@ -8,6 +8,7 @@ const Watched = () =>{
 
     const [offers, setOffers] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
+    const [reservations, setReservations] = useState([]);
 
 
     const getOffers = async () => {
@@ -25,6 +26,23 @@ const Watched = () =>{
             console.error('Error fetching offers:', error);
         }
     };
+
+    const getReservations = async () => {
+        try {
+            const response = await fetch(
+                SERVER_URL + '/user/reservations',
+                { method: 'GET', redirect: "follow", credentials:'include' }
+            );
+            if (response.redirected) {
+                document.location = response.url;
+            }
+            const data = await response.json();
+            setReservations(data);
+        } catch (error) {
+            console.error('Error fetching reservations:', error);
+        }
+    };
+
 
     const dislikeOffer = async (id) => {
         try {
@@ -53,6 +71,7 @@ const Watched = () =>{
 
     useEffect(()=>{
         document.body.style.overflow = 'visible';
+        getReservations();
         getOffers();
     }, []);
 
@@ -73,6 +92,15 @@ const Watched = () =>{
                         <h2 className="mb-4 font-sans text-xl font-semibold text-white">{offer.price}</h2>
                         <Offer offer={offer} />
                     </div>
+                </div>
+            ))}
+            </div>
+            <div className="grid grid-cols-1 gap-6 m-4 justify-center items-center pt-20">
+            {reservations.map((reservation) => (
+                <div key={reservation.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
+                    <h2 className="mb-4 font-sans text-xl font-semibold text-white"> Reservation for: {reservation.reservationDate}</h2>
+                    <h2 className="mb-4 font-sans text-xl font-semibold text-white"> The reservation is for this offer: {reservation.offerName}</h2>
+                 
                 </div>
             ))}
             </div>

@@ -5,6 +5,7 @@ import { SERVER_URL } from '../utilComponents/constant';
 import 'react-datepicker/dist/react-datepicker.css';
 import PaymentForm from '../payment/PaymentForm';
 import Button from '../utilComponents/Button';
+import CreateReservation from '../reservation/CreateReservation.js';
 
 // Styles for the modal
 const customStyles = {
@@ -44,14 +45,17 @@ function Offer({ offer }) {
   // Function to close the modal
   function closeModal() {
     document.body.style.overflow = 'visible';
+    setSelectedDate(null);
+    setReservationStarted(false);
     setIsOpen(false);
   }
 
   // Fetch reserved dates from the server
   const getDates = async () => {
     try {
+
       const response = await fetch(
-        SERVER_URL + '/reservation',
+        SERVER_URL + '/offer/' + offer.id + '/reservations',
         { method: 'GET', redirect: "follow", credentials: 'include' }
       );
 
@@ -71,6 +75,8 @@ function Offer({ offer }) {
     return reservedDates.some(reserved => reserved.reservationDate === dateString);
   };
 
+
+  
   // Filter passed dates (already reserved)
   const filterPassedDate = (date) => {
     return !isDateExcluded(date);
@@ -78,7 +84,7 @@ function Offer({ offer }) {
 
   // Fetch reserved dates when component mounts
   useEffect(() => {
-    //getDates();
+    
     setReservationStarted(false);
   }, []);
 
@@ -110,7 +116,7 @@ function Offer({ offer }) {
             <div className='flex items-center justify-center'>
               {/* Buttons to navigate or finalize reservation */}
               <Button variant={'primary'} onClick={() => setReservationStarted(false)}>Go back</Button>
-              <Button variant={"primary"}>Finalize</Button>
+              <CreateReservation offer={offer} selectedDate={selectedDate} closeModal={closeModal}/>
             </div>
             {/* Payment form component */}
             <PaymentForm price={offer.price} />
@@ -121,6 +127,9 @@ function Offer({ offer }) {
             <div className="mx-10">
               <div className="px-4 sm:px-0">
                 <h3 className="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
+                <form>
+
+                </form>
                 <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Details about the offer and the car.</p>
               </div>
               <div className="mt-6 border-t border-gray-100">
