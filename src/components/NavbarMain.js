@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { IoMdListBox, IoMdApps, IoMdHome } from 'react-icons/io';
@@ -24,15 +24,15 @@ const NavItemMobile = ({ icon, to, onClick }) => (
 
 const Navbar = ({user}) => {
   const [nav, setNav] = useState(false);
-
+ 
   const handleNav = useCallback(() => {
     setNav(prevNav => !prevNav);
   }, []);
 
   return (
-    <div className='fixed bg-white flex justify-between items-center mx-auto px-4 w-full z-10 border-b'>
-      <h1 className='w-full text-2xl font-bold lg:text-left sm:text-center xs:text-center ml-8'>CAR RENTAL SERVICE</h1>
-      <ul /*hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4*/className='hidden md:flex gap-2 rounded-xl bg-white p-1'>
+    <div className='fixed bg-transparent flex justify-between items-center mx-auto w-full z-10 px-4'>
+      <h1 className="pl-4 bg-gradient-to-r from-[#9DB4C0] via-[#6eb0b3] to-[#253237]  bg-clip-text text-transparent text-4xl font-black">Car Rental Service</h1>
+      <ul /*hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4*/className='hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4'>
         <NavItem icon={<IoMdHome style={{ color: 'black' }} size={20} />} to="/" />
         {user.role==="ROLE_ADMIN" && (<NavItem icon={<IoMdListBox style={{ color: 'black' }} size={20} />} to="/dashboard" />)}
         <NavItem icon={<IoMdApps style={{ color: 'black' }} size={20} />} to="/offers" />
@@ -40,10 +40,10 @@ const Navbar = ({user}) => {
         <NavItem icon={<RiUserFill style={{ color: 'black' }} size={20} />} to="/me" />
         <NavItem icon={<IoLogOut style={{ color: 'black' }} size={20} />} to={SERVER_URL+"/logout"}/>
       </ul>
-      <div onClick={handleNav} className='block md:hidden z-10'>
+      <div onClick={handleNav} className='md:hidden z-10 m-4 border border-gray-200 rounded-xl bg-white p-4'>
         {nav ? <AiOutlineClose style={{ color: 'black' }} size={20} /> : <AiOutlineMenu style={{ color: 'black' }} size={20} />}
       </div>
-      <ul className={nav ? 'fixed md:hidden left-0 top-0 w-[15%] h-full bg-[#e0fbfc] ease-in-out duration-500 z-10 flex content-center items-center flex-col' : 'ease-in-out w-[15%] duration-500 fixed top-0 bottom-0 left-[-100%] z-10'}>
+      <ul className={nav ? 'fixed md:hidden left-0 top-0 w-[12%] h-full bg-[#e0fbfc] ease-in-out duration-500 z-10 flex content-center items-center flex-col' : 'ease-in-out w-[15%] duration-500 fixed top-0 bottom-0 left-[-100%] z-10'}>
         <NavItemMobile icon={<IoMdHome style={{ color: 'black' }} size={24} />} to="/" onClick={handleNav} />
         {user.role==="ROLE_ADMIN" && (<NavItemMobile icon={<IoMdListBox style={{ color: 'black' }} size={24} />} to="/dashboard" onClick={handleNav} />)}
         <NavItemMobile icon={<IoMdApps style={{ color: 'black' }} size={24} />} to="/offers" onClick={handleNav} />

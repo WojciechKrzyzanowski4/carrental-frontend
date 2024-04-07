@@ -4,6 +4,8 @@ import { IoHeartDislike } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
 import Button from "./utilComponents/Button";
+import InvoiceModal from "./payment/InvoiceModal";
+import PaymentForm from "./payment/PaymentForm";
 
 const Watched = () =>{
 
@@ -134,7 +136,8 @@ const Watched = () =>{
                                     If something went wrong:
                                 </dt>
                                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                   <Button variant={'outline-black'}>something</Button>
+                                   <PaymentForm/>
+                                   <InvoiceModal reservation={reservation}/>
                                 </dd>
                             </div>
                             </dl>

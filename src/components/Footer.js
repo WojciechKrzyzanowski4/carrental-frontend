@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaXTwitter, FaYahoo, FaYoutube } from 'react-icons/fa6';
+import { FaFacebook, FaXTwitter, FaYahoo, FaYoutube } from 'react-icons/fa6';
 
 function Footer() {
     return (

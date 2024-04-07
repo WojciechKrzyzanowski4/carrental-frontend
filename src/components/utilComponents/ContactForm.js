@@ -8,8 +8,8 @@ const customStyles = {
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      width: '60%',
-      height: '70%',
+      width: '80%',
+      height: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
     },
@@ -51,7 +51,7 @@ const ContactForm = () => {
           >
             <div className="modal-container mx-auto">
               <h2 className="text-2xl font-bold mb-4" ref={(_subtitle) => (subtitle = _subtitle)}></h2>
-              <section class="bg-white dark:bg-gray-900">
+              <section class="bg-white dark:bg-gray-900 rounded-xl">
                 <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                 <h1 class="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Get in touch with our team.</h1>
                 

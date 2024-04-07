@@ -1,25 +1,136 @@
-import React from 'react';
+import React from "react";
+import Modal from 'react-modal';
+import Button from "../utilComponents/Button";
 
-const PaymentForm = ({price}) => {
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      width: '80%',
+      height: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+};
 
-    return(
-        <div className="flex justify-center items-center ">
-            <div className="h-auto w-80 bg-white p-3 rounded-lg m-6 border border-gray-300">
-                <p className="text-xl font-semibold">Payment Details</p>
-                <div className="input_text mt-6 relative"> <input type="text" class="mb-4 mt-1 p-2 border border-gray-300 w-full rounded" placeholder="Jan Kleszczewski" /> <span class="absolute left-0 text-sm -top-4">Cardholder Name</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-user"></i> </div>
-                <div className="input_text mt-4 relative"> <input type="text" class="mb-4 mt-1 p-2 border border-gray-300 w-full rounded" placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d" size="19" /> <span class="absolute left-0 text-sm -top-4">Card Number</span> <i class="absolute left-2 top-[14px] text-gray-400 text-sm fa fa-credit-card"></i> </div>
-                <div className="mt-8 flex gap-5 ">
-                    <div className="input_text relative w-full"> <input type="text" class="mb-4 mt-1 p-2 border border-gray-300 w-full rounded"  placeholder="mm/yyyy" data-slots="my" /> <span class="absolute left-0 text-sm -top-4">Expiry</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-calendar-o"></i> </div>
-                    <div className="input_text relative w-full"> <input type="text" class="mb-4 mt-1 p-2 border border-gray-300 w-full rounded"  placeholder="000" data-slots="0" data-accept="\d" size="3" /> <span class="absolute left-0 text-sm -top-4">CVV</span> <i class="absolute left-2 top-4 text-gray-400 fa fa-lock"></i> </div>
+
+const PaymentForm = ({reservation}) => {
+
+    let subtitle;
+    
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+    
+    function afterOpenModal() {
+        subtitle.style.color = '#000';
+    }
+    
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+
+    return (
+        <div>
+          <Button variant={'outline-black'}onClick={openModal}>Pay</Button>
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Offer-edition-Modal"
+            className="modal fixed inset-0 bg-white rounded-xl"
+            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+            ariaHideApp={false}
+          >
+            <div className="bg-transparent">
+                <h2 className="text-2xl font-bold" ref={(_subtitle) => (subtitle = _subtitle)}></h2>
+                    <div className="rounded-lg bg-white shadow-lg p-10">
+                        <div className="mb-10 text-center">
+                            <h1 class="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Payment.</h1>
+                        </div>
+                        <div className="mb-3 flex -mx-2">
+                            <div className="px-2">
+                                <label for="type1" className="flex items-center cursor-pointer">
+                                    <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked/>
+                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3"/>
+                                </label>
+                            </div>
+                            <div className="px-2">
+                                <label for="type2" className="flex items-center cursor-pointer">
+                                    <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"/>
+                                    <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" class="h-8 ml-3"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div className="mb-3">
+                            <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
+                            <div>
+                                <input className="shadow-sm text-gray-900 text-sm rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="John Smith" type="text"/>
+                            </div>
+                        </div>
+                        <div className="mb-3">
+                            <label className="font-bold text-sm mb-2 ml-1">Card number</label>
+                            <div>
+                                <input className="shadow-sm text-gray-900 text-sm rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="0000 0000 0000 0000" type="text"/>
+                            </div>
+                        </div>
+                        <div className="mb-3 -mx-2 flex items-end">
+                            <div className="px-2 w-1/2">
+                                <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
+                                <div>
+                                    <select className="shadow-sm text-gray-900 text-sm rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                                        <option value="01">01 - January</option>
+                                        <option value="02">02 - February</option>
+                                        <option value="03">03 - March</option>
+                                        <option value="04">04 - April</option>
+                                        <option value="05">05 - May</option>
+                                        <option value="06">06 - June</option>
+                                        <option value="07">07 - July</option>
+                                        <option value="08">08 - August</option>
+                                        <option value="09">09 - September</option>
+                                        <option value="10">10 - October</option>
+                                        <option value="11">11 - November</option>
+                                        <option value="12">12 - December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="px-2 w-1/2">
+                                <select className="shadow-sm text-gray-900 text-sm rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="mb-10">
+                            <label className="font-bold text-sm mb-2 ml-1">Security code</label>
+                            <div>
+                                <input className="shadow-sm text-gray-900 text-sm rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="000" type="text"/>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <Button variant={'primary'} to="/home">Pay now</Button>
+                        </div>
+                    </div>
                 </div>
-                <p className="text-lg text-center mt-4 text-gray-600 font-semibold">Total: ${price}</p>
-                <div className="flex justify-center mt-4"> <button className="bg-[#e0fbfc] hover:bg-[#253237] text-black hover:text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105  m-5 w-60"
-            >Pay</button> </div>
-            </div>
+          </Modal>
         </div>
-
-    );
+      );
+      
 
 }
 
-export default PaymentForm
+export default PaymentForm;

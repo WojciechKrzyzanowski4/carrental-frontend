@@ -48,7 +48,7 @@ function App() {
           {user.role==="ROLE_ADMIN" && (<Route path="/dashboard" element={<Dashboard />} />)}
           <Route path="/offers" element={<Offers />} />
           {user && (<Route path="/me" element={<UserPage user={user} />} />)}
-          <Route path="/likes" element={<Watched />} />
+          <Route path="/likes" element={<Watched />}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
