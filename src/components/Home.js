@@ -19,7 +19,7 @@ function Home() {
                 <div className="w-full md:w-1/2 px-4 mb-16 md:mb-0">
                 <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-white bg-[#253237] uppercase rounded-2xl">Certified</span>
                 <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">For 15 years we were the leaders in our field.</h1>
-                <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">We’re different. Car Rental Service is the only platform that lets you drive our cars, the exact way you want to drive them.</p>
+                <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">We’re different. Car renatl service is the only platform that lets you drive our cars, the exact way you want to drive them.</p>
                 <div className="flex flex-wrap items-center justify-center">
                   <ContactForm/>
                    <Button variant={'outline-black'}>Feedback</Button>
