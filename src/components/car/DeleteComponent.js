@@ -23,12 +23,20 @@ function DeleteComponent({id, handleClick}){
         ).then(async response => {
             if(!response.ok){
                 console.log("Error occurred");
-                setShowAlert(true);
+                handleShowAlert();
             }
 
             handleClick();
         })
     }
+
+
+    const handleShowAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000); 
+    };
 
     useEffect(()=>{
         setShowAlert(false);

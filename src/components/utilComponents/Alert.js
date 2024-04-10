@@ -3,7 +3,7 @@ import React from 'react';
 const Alert = ({message, onClose}) => {
 
    return (
-        <div className="fixed bottom-0 right-0 m-8">
+        <div className="fixed bottom-0 right-0 m-8 z-50">
             <div className="bg-white  rounded-md shadow-lg p-4 max-w-sm w-full">
                 <div className="flex justify-between items-center">
                     <p className="text-lg font-semibold pr-2">{message}</p>

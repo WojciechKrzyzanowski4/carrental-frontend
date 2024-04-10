@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import Modal from 'react-modal';
 import { SERVER_URL } from "../utilComponents/constant";
 import Button from "../utilComponents/Button";
@@ -19,8 +19,8 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
 
     let subtitle;
     
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
+    const [modalIsOpen, setIsOpen] = useState(false);
+  
     function openModal() {
         setIsOpen(true);
     }
