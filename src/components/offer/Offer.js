@@ -104,7 +104,7 @@ function Offer({ offer, handleReservation}) {
         contentLabel="Offer Modal"
        
       >
-        <div className='absolute top-[10%] right-[5%]'>
+        <div className='absolute top-[6rem] right-[5%]'>
           {/* Button to close the modal */}
           <Button variant={'close'} onClick={closeModal}>Close</Button>
         </div>
@@ -115,17 +115,13 @@ function Offer({ offer, handleReservation}) {
           <>
            <div className='text-center mt-[20vh]'>
               <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Thank you for choosing us!</h1>
-              <h1 className='mb-4'>Making a reservation on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
-              <div className='flex items-center justify-center space-x-4'>
+              <h1 className='mb-4'>Making a reservation on {selectedDate ? selectedDate.toLocaleDateString() : ''} for {offer.name}</h1>
+              <div className='flex items-center flex-col  md:flex-row justify-center '>
                 {/* Button to go back */}
                 <Button variant='primary' onClick={() => setReservationStarted(false)}>Go back</Button>
                 {/* Reservation creation component */}
                 <CreateReservation offer={offer} selectedDate={selectedDate} closeModal={closeModal}/>
               </div>
-            </div>
-            {/* Payment form component */}
-            <div className='mt-8 flex items-center justify-center'>
-              <PaymentForm price={offer.price} />
             </div>
           </>
         ) : (
@@ -133,7 +129,7 @@ function Offer({ offer, handleReservation}) {
           <>
             <div className="mx-10">
               <div className="px-4 sm:px-0">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">Offer Information</h3>
+                <h3 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Offer Information</h3>
                 <form>
 
                 </form>

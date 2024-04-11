@@ -89,10 +89,10 @@ function Offers() {
                 <Button variant={'outline-black'}>Feedback</Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 m-4 justify-center items-center mt-40 pt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 m-10 justify-center items-center mt-40 pt-20">
             {offers.length > 0 && likedOffers.length >= 0 && (
                 offers.map((offer) => (
-                    <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
+                    <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg hover:scale-105 duration-500 ease-in-out">
                     <div className="w-full h-80 bg-cover bg-center" /*this is here is somebody wants to add images*/ style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-4 right-4">
                         <button onClick={() => handleShowAlert(offer.id)} className={`w-12 h-12 transition duration-300 ease-in-out ${likedOffers.some(likedOffer => likedOffer.id === offer.id) ? 'text-red-500' : 'text-gray-500'}`}>
