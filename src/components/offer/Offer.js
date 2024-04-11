@@ -23,7 +23,7 @@ const customStyles = {
   },
 };
 
-function Offer({ offer }) {
+function Offer({ offer, handleReservation}) {
   // State variables
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -47,6 +47,7 @@ function Offer({ offer }) {
     document.body.style.overflow = 'visible';
     setSelectedDate(null);
     setReservationStarted(false);
+    handleReservation();
     setIsOpen(false);
   }
 
@@ -103,7 +104,7 @@ function Offer({ offer }) {
         contentLabel="Offer Modal"
        
       >
-        <div className='absolute top-16 right-16'>
+        <div className='absolute top-[10%] right-[5%]'>
           {/* Button to close the modal */}
           <Button variant={'close'} onClick={closeModal}>Close</Button>
         </div>
@@ -112,14 +113,20 @@ function Offer({ offer }) {
         {reservationStarted ? (
           // Reservation in progress
           <>
-            <h1 className='text-center'>Making a reservation on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
-            <div className='flex items-center justify-center'>
-              {/* Buttons to navigate or finalize reservation */}
-              <Button variant={'primary'} onClick={() => setReservationStarted(false)}>Go back</Button>
-              <CreateReservation offer={offer} selectedDate={selectedDate} closeModal={closeModal}/>
+           <div className='text-center mt-[20vh]'>
+              <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Thank you for choosing us!</h1>
+              <h1 className='mb-4'>Making a reservation on {selectedDate ? selectedDate.toLocaleDateString() : ''}</h1>
+              <div className='flex items-center justify-center space-x-4'>
+                {/* Button to go back */}
+                <Button variant='primary' onClick={() => setReservationStarted(false)}>Go back</Button>
+                {/* Reservation creation component */}
+                <CreateReservation offer={offer} selectedDate={selectedDate} closeModal={closeModal}/>
+              </div>
             </div>
             {/* Payment form component */}
-            <PaymentForm price={offer.price} />
+            <div className='mt-8 flex items-center justify-center'>
+              <PaymentForm price={offer.price} />
+            </div>
           </>
         ) : (
           // Offer details and reservation selection

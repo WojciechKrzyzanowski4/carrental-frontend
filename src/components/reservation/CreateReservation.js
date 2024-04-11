@@ -21,9 +21,8 @@ const CreateReservation = ({offer, selectedDate, closeModal}) => {
         ).then(async (response) => {
             if (!response.ok) {
                 console.log("Error occurred");
-                alert("the other admin was faster and managed to delete the car before you could edit it");
             } else {
-                alert("car edited");
+                alert("reservation booked");
                 performClose();
             }
         });
@@ -37,7 +36,7 @@ const CreateReservation = ({offer, selectedDate, closeModal}) => {
     <div> 
     <form onSubmit={handleSubmit}>
         <input type="hidden" name='reservationDate' defaultValue={new Date(selectedDate).toISOString()}></input>
-        <Button variant={"primary"} type='submit'>Edit</Button>
+        <Button variant={"primary"} type='submit'>Finalize</Button>
     </form>
     </div>
   )

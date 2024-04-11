@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { IoMdListBox, IoMdApps, IoMdHome } from 'react-icons/io';
@@ -30,9 +30,9 @@ const Navbar = ({user}) => {
   }, []);
 
   return (
-    <div className='fixed bg-transparent flex justify-between items-center mx-auto w-full z-10 px-4'>
-      <h1 className="pl-4 bg-gradient-to-r from-[#9DB4C0] via-[#6eb0b3] to-[#253237]  bg-clip-text text-transparent text-4xl font-black">Car Rental Service</h1>
-      <ul /*hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4*/className='hidden md:flex gap-2 border border-gray-200 rounded-xl bg-white m-4'>
+    <div className='fixed bg-[#e0fbfc] flex justify-between items-center mx-auto w-full z-10 px-4 '>
+      <h1 className="pl-4  bg-clip-text text-4xl font-black">Car Rental Service</h1>
+      <ul /**/className='hidden md:flex gap-2 rounded-xl bg-white m-2'>
         <NavItem icon={<IoMdHome style={{ color: 'black' }} size={20} />} to="/" />
         {user.role==="ROLE_ADMIN" && (<NavItem icon={<IoMdListBox style={{ color: 'black' }} size={20} />} to="/dashboard" />)}
         <NavItem icon={<IoMdApps style={{ color: 'black' }} size={20} />} to="/offers" />

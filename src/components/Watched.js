@@ -3,9 +3,9 @@ import { SERVER_URL } from "./utilComponents/constant";
 import { IoHeartDislike } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
-import Button from "./utilComponents/Button";
 import InvoiceModal from "./payment/InvoiceModal";
 import PaymentForm from "./payment/PaymentForm";
+import { FaRegStickyNote } from "react-icons/fa";
 
 const Watched = () =>{
 
@@ -72,6 +72,10 @@ const Watched = () =>{
         }, 5000); 
     };
 
+    function handleReservation() {
+        getReservations();
+    }
+
     useEffect(()=>{
         document.body.style.overflow = 'visible';
         getReservations();
@@ -79,10 +83,17 @@ const Watched = () =>{
     }, []);
 
     return(
-        <div className="pt-16 text-center">
-            <div className="grid grid-cols-1 gap-6 m-4 justify-center items-center pt-20">
+        <div className="pt-40 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">These are your liked offers</h1>
+            <p className="text-lg md:text-xl lg:text-2xl mb-4 p-4">We will send you a notification of any promotion about these offers</p>
+            {offers.length===0 && (
+                <div className="flex justify-center content-center pt-20">
+                    <FaRegStickyNote size={100}/>
+                </div>
+            )}        
+            <div className="grid grid-cols-1 gap-6 m-4 justify-center items-center pt-20 pb-20">
             {offers.map((offer) => (
-                <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-lg">
+                <div key={offer.id} className="relative flex flex-col items-center justify-center rounded-xl bg-center bg-[#253237] bg-overflow-hidden shadow-md">
                     <div className="w-full h-80 bg-cover bg-center" /*this is here is somebody wants to add images*/ style={{ backgroundImage: `url(${offer.imageUrl})` }}>
                         <div className="absolute top-8 right-8">
                             <button onClick={() => handleShowAlert(offer.id)} className="rounded-full p-2 transition duration-300 ease-in-out text-red-500 hover:text-gray-500">
@@ -93,11 +104,18 @@ const Watched = () =>{
                     <div className="p-6">
                         <h1 className="mb-4 font-sans text-2xl font-semibold text-white">{offer.name}</h1>
                         <h2 className="mb-4 font-sans text-xl font-semibold text-white">{offer.price}</h2>
-                        <Offer offer={offer} />
+                        <Offer offer={offer} handleReservation={handleReservation} />
                     </div>
                 </div>
             ))}
             </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">These are your reservations</h1>
+            <p className="text-lg md:text-xl lg:text-2xl mb-4 p-4">You can pay for them here or in shop</p> 
+            {reservations.length===0 && (
+                <div className="flex justify-center content-center pt-20">
+                    <FaRegStickyNote size={100}/>
+                </div>
+            )}  
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 m-4 justify-center items-center pt-20">
                 {reservations.map((reservation) => (
                     <div key={reservation.id} className="relative flex flex-col rounded-xl bg-center border border-[#253237] bg-overflow-hidden shadow-md">
@@ -133,7 +151,7 @@ const Watched = () =>{
                             </div>
                             <div className="px-2 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                                    If something went wrong:
+                                    Pay or generate an invoice:
                                 </dt>
                                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                    <PaymentForm/>

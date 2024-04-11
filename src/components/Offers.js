@@ -69,15 +69,18 @@ function Offers() {
         }, 5000); 
     };
 
+    function handleReservation(){
+        console.log("reservation added");
+    }
+
     useEffect(() => {
         document.body.style.overflow = 'visible';
         getOffers();
         getLikedOffers();
     }, []);
 
-    return (
-        <div className="pt-40 pb-4 bg-white text-center">
-            
+    return ( 
+        <div className="pt-40 pb-4 text-center bg-[/background.jpg] bg-cover bg-center h-100 " >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Find Your Perfect Ride</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 ">Explore our wide range of rental cars with unbeatable offers</p>
             <p className="text-lg md:text-xl lg:text-2xl mb-16 ">We promise excellence and an unforgetable expericence</p>
@@ -100,7 +103,7 @@ function Offers() {
                         <div className="p-6">
                             <h1 className="mb-4 font-sans text-2xl font-semibold text-white">{offer.name}</h1>
                             <h2 className="mb-4 font-sans text-xl font-semibold text-white">{offer.price}</h2>
-                            <Offer offer={offer} />
+                            <Offer offer={offer} handleReservation={handleReservation} />
                         </div>
                     </div>
                 ))
