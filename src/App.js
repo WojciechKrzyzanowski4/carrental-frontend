@@ -9,6 +9,7 @@ import Watched from './components/Watched';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import { SERVER_URL } from './components/utilComponents/constant';
+import History from './components/History';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {user.role==="ROLE_ADMIN" && (<Route path="/dashboard" element={<Dashboard />} />)}
+          {user.role==="ROLE_ADMIN" && (<Route path="/history" element={<History />} />)}
           <Route path="/offers" element={<Offers />} />
           {user && (<Route path="/me" element={<UserPage user={user} />} />)}
           <Route path="/likes" element={<Watched />}/>
