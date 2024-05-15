@@ -75,6 +75,10 @@ function Offers() {
 
     useEffect(() => {
         document.body.style.overflow = 'visible';
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         getOffers();
         getLikedOffers();
     }, []);
