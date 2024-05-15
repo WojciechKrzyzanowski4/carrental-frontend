@@ -31,11 +31,11 @@ const History = () => {
 
 
     return (
-        <div className="pt-40 text-center">
+        <div className="pt-40 text-center flex flex-col items-center justify-center">
             {records && records.map((record) => (
-                <div key={record.id}>
-                    <p> {record.recordDate}</p>
-                    <p> {record.status}</p>
+                <div className= "border border-slate-900 bg-pink-500 m-5 w-[30vw] rounded-md" key={record.id}>
+                    <p> Record date: {record.recordDate}</p>
+                    <p> Record status: {record.status}</p>
                 </div>
             ))}
         </div>
