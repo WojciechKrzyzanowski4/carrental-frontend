@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import Button from './utilComponents/Button';
 import ContactForm from './utilComponents/ContactForm';
-
+import LinkButton from './utilComponents/LinkButton'
 
 
 
@@ -14,6 +14,7 @@ function Home() {
             behavior: 'smooth'
           });
     }, []);
+
 
     return(
         <>
@@ -40,7 +41,8 @@ function Home() {
                 <div className="w-full md:w-1/2 px-4">
                 
                 <div className="relative mx-auto md:mr-0 max-w-max">
-                    <Button variant={'primary'}>Try Us! </Button>
+                    
+                    <LinkButton text="Try, Us!" to="/offers" variant="primary"/>
                     <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">The future of renting cars</h1>
                     <span className="inline-block py-px px-3 mx-4 text-xs leading-5 text-white bg-[#253237] uppercase rounded-2xl">Faster </span>
                     <span className="inline-block py-px px-3 mx-4 text-xs leading-5 text-white bg-[#253237] uppercase rounded-2xl">More Reliable </span>
