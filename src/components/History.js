@@ -33,7 +33,7 @@ const History = () => {
     return (
         <div className="pt-40 text-center flex flex-col items-center justify-center">
             {records && records.map((record) => (
-                <div className= "border border-slate-900 bg-slate-200 m-5 w-[30vw] rounded-md" key={record.id}>
+                <div className= "border border-slate-900 bg-pink-500 m-5 w-[30vw] rounded-md" key={record.id}>
                     <p> Record date: {record.recordDate}</p>
                     <p> Record status: {record.status}</p>
                 </div>
