@@ -22,7 +22,10 @@ const History = () => {
     }
 
     useEffect(()=>{
-        
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         getRecords();
     },[])
 
