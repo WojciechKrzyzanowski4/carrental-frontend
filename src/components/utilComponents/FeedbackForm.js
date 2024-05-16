@@ -68,13 +68,6 @@ const FeedbackForm = () => {
     });
   };
 
-  const handleRatingChange = (e) => {
-    setFormData({
-      ...formData,
-      rating: parseInt(e.target.value, 10),
-    });
-  };
-
   return (
     <div>
       <Button variant={"outline-black"} onClick={openModal}>
@@ -92,9 +85,12 @@ const FeedbackForm = () => {
       >
         <div className="modal-container mx-auto">
           <h2
+            hidden="true"
             className="text-2xl font-bold mb-4"
             ref={(_subtitle) => (subtitle = _subtitle)}
-          ></h2>
+          >
+            h2
+          </h2>
           <section className="bg-white dark:bg-gray-900 rounded-xl">
             <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
               <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
@@ -155,49 +151,66 @@ const FeedbackForm = () => {
                     Type of feedback
                   </label>
                   <div className="flex flex-row justify-center items-center shadow-sm border border-gray-300 rounded-md p-4">
-                  <label className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
-                    htmlFor="bug"
-                    style={formData.type==="bug" ? {backgroundColor:"#253237", color:"white"} : {backgroundColor:"#e0fbfc"}}>
+                    <label
+                      className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
+                      htmlFor="bug"
+                      style={
+                        formData.type === "bug"
+                          ? { backgroundColor: "#253237", color: "white" }
+                          : { backgroundColor: "#e0fbfc" }
+                      }
+                    >
                       Bug
                     </label>
                     <input
-                        type="radio"
-                        name="type"
-                        value="bug"
-                        id="bug"
-                        checked={formData.type === "bug"}
-                        onChange={handleChange}
-                        className="m-2 w-4 h-4 hidden peer"
+                      type="radio"
+                      name="type"
+                      value="bug"
+                      id="bug"
+                      checked={formData.type === "bug"}
+                      onChange={handleChange}
+                      className="m-2 w-4 h-4 hidden peer"
                     />
-                    <label className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
-                    htmlFor="feature"
-                    style={formData.type==="feature" ? {backgroundColor:"#253237", color:"white"} : {backgroundColor:"#e0fbfc"}}>
+                    <label
+                      className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
+                      htmlFor="feature"
+                      style={
+                        formData.type === "feature"
+                          ? { backgroundColor: "#253237", color: "white" }
+                          : { backgroundColor: "#e0fbfc" }
+                      }
+                    >
                       Feature Request
                     </label>
                     <input
-                        type="radio"
-                        name="type"
-                        value="feature"
-                        id="feature"
-                        checked={formData.type === "feature"}
-                        onChange={handleChange}
-                        className="m-2 w-4 h-4 hidden peer"
-                      />
-                    <label className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
-                    htmlFor="general"
-                    style={formData.type==="general" ? {backgroundColor:"#253237", color:"white"} : {backgroundColor:"#e0fbfc"}}>
-                      
+                      type="radio"
+                      name="type"
+                      value="feature"
+                      id="feature"
+                      checked={formData.type === "feature"}
+                      onChange={handleChange}
+                      className="m-2 w-4 h-4 hidden peer"
+                    />
+                    <label
+                      className="mr-4 ml-4 p-2 transition-all duration-400 rounded-md"
+                      htmlFor="general"
+                      style={
+                        formData.type === "general"
+                          ? { backgroundColor: "#253237", color: "white" }
+                          : { backgroundColor: "#e0fbfc" }
+                      }
+                    >
                       General Feedback
                     </label>
                     <input
-                        type="radio"
-                        name="type"
-                        value="general"
-                        id="general"
-                        checked={formData.type === "general"}
-                        onChange={handleChange}
-                        className="m-2 w-4 h-4 hidden peer"
-                      />
+                      type="radio"
+                      name="type"
+                      value="general"
+                      id="general"
+                      checked={formData.type === "general"}
+                      onChange={handleChange}
+                      className="m-2 w-4 h-4 hidden peer"
+                    />
                   </div>
                 </div>
                 <Button type="submit" variant={"big"}>
@@ -206,12 +219,11 @@ const FeedbackForm = () => {
               </form>
             </div>
           </section>
-         
         </div>
       </Modal>
       {showAlert && (
-            <Alert message={alertMessage} onClose={() => setShowAlert(false)} />
-          )}
+        <Alert message={alertMessage} onClose={() => setShowAlert(false)} />
+      )}
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { SERVER_URL } from "./utilComponents/constant";
 import { IoHeart } from "react-icons/io5";
 import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
-import Button from "./utilComponents/Button";
 import ContactForm from "./utilComponents/ContactForm";
 import FeedbackForm from "./utilComponents/FeedbackForm";
 
