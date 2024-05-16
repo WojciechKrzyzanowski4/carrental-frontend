@@ -24,8 +24,7 @@ const FeedbackForm = () => {
     email: "",
     overview: "",
     description: "",
-    type: "bug", // default type
-    rating: 0,
+    type: "bug", 
   });
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -85,7 +84,7 @@ const FeedbackForm = () => {
       >
         <div className="modal-container mx-auto">
           <h2
-            hidden="true"
+            hidden={true}
             className="text-2xl font-bold mb-4"
             ref={(_subtitle) => (subtitle = _subtitle)}
           >
