@@ -73,7 +73,7 @@ const EditOffer = ({offer, handleOfferClick, cars}) => {
             style={customStyles}
             contentLabel="Offer-edition-Modal"
             className="modal fixed inset-0 flex items-center justify-center"
-            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-10"
             ariaHideApp={false}
           >
             <div className="modal-container mx-auto p-16 bg-white rounded-lg shadow-lg">

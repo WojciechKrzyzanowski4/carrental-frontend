@@ -5,6 +5,7 @@ import Offer from "./offer/Offer";
 import Alert from "./utilComponents/Alert";
 import Button from "./utilComponents/Button";
 import ContactForm from "./utilComponents/ContactForm";
+import FeedbackForm from "./utilComponents/FeedbackForm";
 
 function Offers() {
     const [offers, setOffers] = useState([]);
@@ -90,7 +91,7 @@ function Offers() {
             <p className="text-lg md:text-xl lg:text-2xl mb-16 ">We promise excellence and an unforgetable expericence</p>
             <div className="flex flex-wrap items-center justify-center">
                 <ContactForm/>
-                <Button variant={'outline-black'}>Feedback</Button>
+                <FeedbackForm/>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 m-10 justify-center items-center mt-40 pt-20">

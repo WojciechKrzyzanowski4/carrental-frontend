@@ -10,6 +10,7 @@ import EditOffer from "./offer/EditOffer";
 
 import Button from "./utilComponents/Button";
 import ContactForm from "./utilComponents/ContactForm";
+import FeedbackForm from "./utilComponents/FeedbackForm";
 
 
 function Dashboard() {
@@ -82,7 +83,7 @@ function Dashboard() {
             <p className="text-lg md:text-xl text-center lg:text-2xl mb-4 ">Create all of the offers and add cars from this dashboard</p>
             <div className="flex flex-wrap items-center justify-center">
                 <ContactForm/>
-                <Button variant={'outline-black'}>Feedback</Button>
+                <FeedbackForm/>
             </div>
         
             <p className="text-lg md:text-xl lg:text-2xl mb-4 mt-40 text-center">All the avaliable cars</p>

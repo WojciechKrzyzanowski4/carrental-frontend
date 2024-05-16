@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Button from "./utilComponents/Button";
 import ContactForm from "./utilComponents/ContactForm";
 import LinkButton from "./utilComponents/LinkButton";
+import FeedbackForm from "./utilComponents/FeedbackForm";
 
 function Home() {
   useEffect(() => {
@@ -30,7 +30,7 @@ function Home() {
               </p>
               <div className="flex flex-wrap items-center justify-center">
                 <ContactForm />
-                <Button variant={"outline-black"}>Feedback</Button>
+                <FeedbackForm />
               </div>
             </div>
             <div className="w-full md:w-1/2 px-4 h-[400px] bg-[#e0fbfc] rounded-3xl"></div>

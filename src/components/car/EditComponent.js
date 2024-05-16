@@ -7,7 +7,7 @@ import Button from '../utilComponents/Button';
 
 const customStyles = {
     content: {
-      top: '50%',
+      top: "550px",
       left: '50%',
       right: 'auto',
       bottom: 'auto',
@@ -73,7 +73,7 @@ function EditComponent({ car, handleClick }) {
                 style={customStyles}
                 contentLabel="Car-edition-Modal"
                 className="modal fixed inset-0 flex items-center justify-center"
-                overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+                overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-10"
                 ariaHideApp={false}
             >
                 <div className="modal-container mx-auto p-16 bg-white rounded-lg shadow-lg">

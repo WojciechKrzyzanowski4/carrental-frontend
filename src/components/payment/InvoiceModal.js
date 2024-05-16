@@ -5,7 +5,7 @@ import Invoice from './Invoice';
 
 const customStyles = {
     content: {
-      top: '50%',
+      top: "550px",
       left: '50%',
       right: 'auto',
       bottom: 'auto',
@@ -41,7 +41,7 @@ const InvoiceModal = ({reservation}) => {
       style={customStyles}
       contentLabel="Offer-edition-Modal"
       className="modal fixed inset-0 bg-white rounded-xl"
-      overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+      overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-10"
       ariaHideApp={false}
     >
       <div className="bg-transparent">

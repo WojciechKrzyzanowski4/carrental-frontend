@@ -4,7 +4,7 @@ import Button from "../utilComponents/Button";
 
 const customStyles = {
     content: {
-      top: '50%',
+      top: "550px",
       left: '50%',
       right: 'auto',
       bottom: 'auto',
@@ -45,11 +45,11 @@ const PaymentForm = ({reservation}) => {
             style={customStyles}
             contentLabel="Offer-edition-Modal"
             className="modal fixed inset-0 bg-white rounded-xl"
-            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50"
+            overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-10"
             ariaHideApp={false}
           >
             <div className="bg-transparent">
-                <h2 className="text-2xl font-bold" ref={(_subtitle) => (subtitle = _subtitle)}></h2>
+                <h2 className="text-2xl font-bold" ref={(_subtitle) => (subtitle = _subtitle)} ></h2>
                     <div className="rounded-lg bg-white shadow-lg p-10">
                         <div className="mb-10 text-center">
                             <h1 class="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">Payment.</h1>
@@ -58,13 +58,13 @@ const PaymentForm = ({reservation}) => {
                             <div className="px-2">
                                 <label for="type1" className="flex items-center cursor-pointer">
                                     <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked/>
-                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3"/>
+                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" alt="cardImage" class="h-8 ml-3"/>
                                 </label>
                             </div>
                             <div className="px-2">
                                 <label for="type2" className="flex items-center cursor-pointer">
                                     <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"/>
-                                    <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" class="h-8 ml-3"/>
+                                    <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" alt="cardImage" class="h-8 ml-3"/>
                                 </label>
                             </div>
                         </div>
