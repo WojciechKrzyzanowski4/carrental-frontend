@@ -41,7 +41,7 @@ const History = () => {
     <div className="pt-40 text-center flex flex-col items-center justify-center">
       <h1 className="text-4xl md:text-5xl text-center lg:text-6xl font-bold leading-tight mb-4">Check finalized Reservations</h1>
             <p className="text-lg md:text-xl text-center lg:text-2xl mb-4 ">This are all the reservations that were made by the users</p>
-            <div className="flex flex-wrap items-center justify-center">
+            <div className="flex flex-wrap items-center justify-center pb-20">
                 <ContactForm/>
 
                 <FeedbackForm/>
