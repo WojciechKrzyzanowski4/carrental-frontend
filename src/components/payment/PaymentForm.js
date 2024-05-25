@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import Button from "../utilComponents/Button";
+import { SERVER_URL } from "../utilComponents/constant";
+import Alert from "../utilComponents/Alert";
 
 const customStyles = {
   content: {
@@ -15,11 +17,11 @@ const customStyles = {
   },
 };
 
-const PaymentForm = ({ reservation }) => {
+const PaymentForm = ({ reservation, onPaymentSuccess }) => {
   let subtitle;
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  const [modalIsOpen, setIsOpen] = useState(false);
+ 
   function openModal() {
     setIsOpen(true);
   }
@@ -32,6 +34,23 @@ const PaymentForm = ({ reservation }) => {
     setIsOpen(false);
   }
 
+  const handlePaymentSubmit = async() => {
+    try{
+      const response = await fetch(
+        `${SERVER_URL}/record/book/${reservation.id}`,
+          {method: 'PUT', credentials:'include'}
+      );
+      if (!response.ok) {
+          throw new Error('Failed to book reservation');
+      }
+      closeModal();
+      onPaymentSuccess();
+      
+    }catch(error){
+     
+      console.error('Error booking reservation:', error.message);
+    }
+  }
   return (
     <div>
       <Button variant={"outline-black"} onClick={openModal}>
@@ -69,7 +88,7 @@ const PaymentForm = ({ reservation }) => {
                     className="form-radio h-5 w-5 text-indigo-500"
                     name="type"
                     id="type1"
-                    checked
+                    
                   />
                   <img
                     src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
@@ -166,7 +185,8 @@ const PaymentForm = ({ reservation }) => {
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <Button variant={"primary"} to="/home">
+              
+              <Button variant={"primary"} to="/home" onClick={handlePaymentSubmit}>
                 Pay now
               </Button>
             </div>

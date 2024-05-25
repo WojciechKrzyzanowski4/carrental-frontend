@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Button from "../utilComponents/Button";
 import Alert from "./Alert";
+import { SERVER_URL } from "./constant";
 
 const customStyles = {
   content: {
@@ -25,7 +26,6 @@ const FeedbackForm = () => {
     overview: "",
     description: "",
     type: "bug", // default type
-    rating: 0,
   });
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -54,10 +54,36 @@ const FeedbackForm = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
-    console.log(formData);
-    closeModal();
-    handleShowAlert();
+    event.preventDefault();
+    setFormData(formData);
+
+    if(formData.description==="" || formData.email==="" || formData.overview===""){
+      setAlertMessage("please fill out every field");
+      handleShowAlert();
+      return;
+    }
+   
+    const formJson = JSON.stringify(formData)
+    console.log(formJson)
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: formJson,
+      credentials: "include",
+    };
+
+    fetch(SERVER_URL + "/send/feedback", requestOptions).then(async (response) => {
+      if (!response.ok) {
+        //implement different behavoiur regarding the errors the backend provides
+        setAlertMessage("error sending email");
+        handleShowAlert();
+        closeModal();
+      }
+      closeModal();
+      setAlertMessage("email send succesfully");
+      handleShowAlert();
+    });
   };
 
   const handleChange = (e) => {

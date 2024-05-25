@@ -12,6 +12,7 @@ const Watched = () =>{
     const [offers, setOffers] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const [reservations, setReservations] = useState([]);
+    const [message, setMessage] = useState("");
 
 
     const getOffers = async () => {
@@ -66,14 +67,32 @@ const Watched = () =>{
     const handleShowAlert = async (id) => {
         await dislikeOffer(id);
         getOffers();
+        setMessage("offer disliked successfully")
         setShowAlert(true);
         setTimeout(() => {
             setShowAlert(false);
         }, 5000); 
     };
 
+    
+
     function handleReservation() {
         getReservations();
+        setMessage("Thank you for making a new reservation!");
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 5000); 
+       
+    }
+
+    function handlePayment() {
+        getReservations();
+        setMessage("Your reservation is booked, see you soon!");
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 5000); 
     }
 
     useEffect(()=>{
@@ -158,7 +177,7 @@ const Watched = () =>{
                                     Pay or generate an invoice:
                                 </dt>
                                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                   <PaymentForm/>
+                                   <PaymentForm reservation={reservation} onPaymentSuccess={handlePayment}/>
                                    <InvoiceModal reservation={reservation}/>
                                 </dd>
                             </div>
@@ -169,7 +188,7 @@ const Watched = () =>{
                 </div>
             {showAlert && (
             <Alert
-                message="An offer has been disliked"
+                message={message}
                 onClose={() => setShowAlert(false)}
             />
             )}

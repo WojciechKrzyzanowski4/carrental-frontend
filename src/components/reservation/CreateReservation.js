@@ -19,7 +19,6 @@ const CreateReservation = ({ offer, selectedDate, closeModal }) => {
         if (!response.ok) {
           console.log("Error occurred");
         } else {
-          alert("reservation booked");
           performClose();
         }
       }
