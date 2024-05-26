@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Button from "../utilComponents/Button";
 import { SERVER_URL } from "../utilComponents/constant";
-import Alert from "../utilComponents/Alert";
+
 
 const customStyles = {
   content: {
