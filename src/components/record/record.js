@@ -2,7 +2,7 @@ import React from "react";
 
 function Record({ record }) {
   return (
-    <div className="border border-gray-900 rounded-lg p-4 flex items-center justify-center">
+    <div className="rounded-lg p-4 flex items-center justify-center bg-white shadow-md">
       {record ? (
         <div>
           <div className="px-4 sm:px-0">

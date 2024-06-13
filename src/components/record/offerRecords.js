@@ -28,7 +28,7 @@ const OfferRecords = ({ offer }) => {
   }, [offer.id, getRecords]);
 
   return (
-    <div className="rounded-xl bg-[#e0fbfc] shadow-md m-8 pb-4 min-w-[50%] hover:scale-105 transition-[0.4s]">
+    <div className="rounded-xl bg-[#e0fbfc] shadow-md m-8 p-4 w-[80%] hover:scale-105 transition-[0.4s]">
         {offer && (
         <>
             <h2 className="text-2xl font-bold p-4">
